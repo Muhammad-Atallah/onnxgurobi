@@ -21,7 +21,7 @@ class GemmOperator:
         var_input = variables[self.input1]
         var_output = variables[self.output]
 
-        for i in range(len(bias)):
+        for i in range(len(var_input)):
             if weights.ndim == 1:
                 weight_row = weights
             else:
