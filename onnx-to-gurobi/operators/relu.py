@@ -8,7 +8,7 @@ class ReLUOperator:
     def apply_constraints(self, gurobi_model, variables):
         var_input = variables[self.input]
         var_output = variables[self.output]
-        upper_bound = pow(10, 10)
+        upper_bound = 1e10
 
         binary_var = gurobi_model.addVars(var_input.keys(), vtype=GRB.BINARY, name=f"relu_binary_{self.output}")
 
