@@ -1,4 +1,3 @@
-# onnx_to_gurobi/operators/add.py
 from gurobipy import quicksum
 import numpy as np
 
@@ -10,7 +9,6 @@ class AddOperator:
         self.initializers = node["initializers"]
 
     def apply_constraints(self, gurobi_model, variables):
-        #if inputs aren't in the initializers, they are in the variables
         var_input1 = self.initializers.get(self.input1)
         if var_input1 is None:
             var_input1 = variables.get(self.input1)
