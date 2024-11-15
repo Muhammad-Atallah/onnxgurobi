@@ -30,5 +30,5 @@ class MatMul:
                 raise ValueError(f"Unexpected weights shape {weights.shape}")
 
         for i in range(output_size):
-            expression = quicksum(weights[j, i] * var_input[j] for j in range(input_size))
+            expression = quicksum(float(weights[j, i]) * var_input[j] for j in range(input_size))
             gurobi_model.addConstr(var_output[i] == expression, name=f"MatMul_{self.output}_{i}")

@@ -1,7 +1,8 @@
+# onnx_to_gurobi/operators/add.py
 from gurobipy import quicksum
 import numpy as np
 
-class AddOperator:
+class SubOperator:
     def __init__(self, node):
         self.input1 = node["input"][0]["name"]
         self.input2 = node["input"][1]["name"]      # Scalar or vector
@@ -30,13 +31,13 @@ class AddOperator:
             # Both inputs are vectors
             for i in range(len(var_output)):
                 gurobi_model.addConstr(
-                    var_output[i] == var_input1[i] + var_input2[i],
-                    name=f"Add_{self.output}_{i}"
+                    var_output[i] == var_input1[i] - var_input2[i],
+                    name=f"Sub_{self.output}_{i}"
                 )
         else:
             # var_input2 is a scalar
             for i in range(len(var_output)):
                 gurobi_model.addConstr(
-                    var_output[i] == var_input1[i] + var_input2,
-                    name=f"Add_{self.output}_{i}"
+                    var_output[i] == var_input1[i] - var_input2,
+                    name=f"Sub_{self.output}_{i}"
                 )

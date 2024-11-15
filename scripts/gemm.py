@@ -32,5 +32,5 @@ class GemmOperator:
                 raise ValueError(f"Unexpected weights shape {weights.shape}")
 
         for i in range(output_size):
-            expression = quicksum(weights[j, i] * var_input[j] for j in range(input_size)) + bias[i]
+            expression = quicksum(float(weights[j, i]) * var_input[j] for j in range(input_size)) + float(bias[i])
             gurobi_model.addConstr(var_output[i] == expression, name=f"Gemm_{self.output}_{i}")
