@@ -19,9 +19,7 @@ import torch.onnx
 
 #     def forward(self, x):
 #         x = self.fc1(x)
-#         x = x - 0.1
 #         x = x + 0.1
-#         x = F.relu(self.fc2(x))
 #         x = self.fc3(x)
 
 #         return x
@@ -32,23 +30,20 @@ import torch.onnx
 
 
 
-# class Net(nn.Module):
-#     def __init__(self):
-#         super().__init__()
-#         self.fc1 = nn.Linear(28*28, 100)
-#         self.fc2 = nn.Linear(100, 20)
-#         self.fc3 = nn.Linear(20, 10)
+class Net(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(28*28, 100)
+        self.fc2 = nn.Linear(100, 20)
+        self.fc3 = nn.Linear(20, 10)
 
-#     def forward(self, x):
-#         # First layer: MatMul and Add
-#         x = torch.matmul(x, self.fc1.weight.t()) + self.fc1.bias
-#         # Second layer: MatMul and Add
-#         x = torch.matmul(x, self.fc2.weight.t()) + self.fc2.bias
-#         # Third layer: MatMul and Add
-#         x = torch.matmul(x, self.fc3.weight.t()) + self.fc3.bias
-#         return x
+    def forward(self, x):
+        x = self.fc1(x)
+        x = torch.matmul(x, self.fc2.weight.t()) + self.fc2.bias
+        x = torch.matmul(x, self.fc3.weight.t()) + self.fc3.bias
+        return x
 
-# model = Net()
+model = Net()
 
 
 
@@ -79,26 +74,26 @@ import torch.onnx
 # model = Net()
 
 
-class Net(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.fc1 = nn.Linear(28*28, 100)
-        self.fc2 = nn.Linear(100, 20)
-        self.fc3 = nn.Linear(120, 10)  # Updated input size from 20 to 120
+# class Net(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         self.fc1 = nn.Linear(28*28, 100)
+#         self.fc2 = nn.Linear(100, 20)
+#         self.fc3 = nn.Linear(120, 10)  # Updated input size from 20 to 120
 
-    def forward(self, x):
-        x1 = self.fc1(x)
-        # x1 = x1 - 0.1
-        # x1 = x1 + 0.1
-        x2 = F.relu(self.fc2(x1))
+#     def forward(self, x):
+#         x1 = self.fc1(x)
+#         # x1 = x1 - 0.1
+#         # x1 = x1 + 0.1
+#         x2 = F.relu(self.fc2(x1))
 
-        # Concatenate x1 and x2 along dimension 1
-        x_concat = torch.cat((x1, x2), dim=1)  # Shape: (batch_size, 120)
+#         # Concatenate x1 and x2 along dimension 1
+#         x_concat = torch.cat((x1, x2), dim=1)  # Shape: (batch_size, 120)
 
-        # Pass the entire concatenated tensor to fc3 without slicing
-        x = self.fc3(x_concat)  # Shape: (batch_size, 10)
+#         # Pass the entire concatenated tensor to fc3 without slicing
+#         x = self.fc3(x_concat)  # Shape: (batch_size, 10)
 
-        return x
+#         return x
 
 
 model = Net()

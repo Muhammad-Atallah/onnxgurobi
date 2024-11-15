@@ -10,15 +10,12 @@ class AddOperator:
         self.initializers = node["initializers"]
 
     def apply_constraints(self, gurobi_model, variables):
-        # Fetch var_input1
         var_input1 = self.initializers.get(self.input1)
         if var_input1 is None:
             var_input1 = variables.get(self.input1)
-        # Fetch var_input2
         var_input2 = self.initializers.get(self.input2)
         if var_input2 is None:
             var_input2 = variables.get(self.input2)
-        # Fetch var_output
         var_output = variables.get(self.output)
         gurobi_model.update()
 
