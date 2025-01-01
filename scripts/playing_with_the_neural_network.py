@@ -3,7 +3,7 @@ from onnx import numpy_helper, ModelProto, NodeProto
 import numpy as np
 import struct
 
-onnx_model = onnx.load("neural_network.onnx")
+onnx_model = onnx.load("conv.onnx")
 
 graph = onnx_model.graph
 
@@ -11,8 +11,11 @@ input_output_tensors_shapes = {}
 
 constant_node = {}
 
-for node in graph.node:
-        print(node)
+for input in graph.input:
+    for dim in input.type.tensor_type.shape.dim:
+        print(dim)
+# for node in graph.node:
+#         print(node)
     # if node.op_type == "Gemm":
     #     print(node)
     #     print(node.input)

@@ -30,25 +30,86 @@ import torch.onnx
 
 
 
-class Net(nn.Module):
+# class Net(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         self.fc1 = nn.Linear(28*28, 100)
+#         self.fc2 = nn.Linear(100, 20)
+#         self.fc3 = nn.Linear(20, 10)
+
+#     def forward(self, x):
+#         x = self.fc1(x)
+#         x = torch.matmul(x, self.fc2.weight.t()) + self.fc2.bias
+#         x = torch.matmul(x, self.fc3.weight.t()) + self.fc3.bias
+#         return x
+
+# model = Net()
+
+
+
+
+
+########################################Conv network###################################################
+#######################################################################################################
+class SimpleCNN(nn.Module):
     def __init__(self):
-        super().__init__()
-        self.fc1 = nn.Linear(28*28, 100)
-        self.fc2 = nn.Linear(100, 20)
-        self.fc3 = nn.Linear(20, 10)
+        super(SimpleCNN, self).__init__()
+        # Convolutional layer: 1 input channel (grayscale), 16 output channels, 3x3 kernel
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3, stride=1, padding=1)
+        # Convolutional layer: 16 input channels, 32 output channels, 3x3 kernel
+        self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1)
+        # Fully connected layer: input size 32*7*7, output size 10 (e.g., for 10 classes)
+        self.fc = nn.Linear(32 * 7 * 7, 10)
+        # Max pooling layer
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
 
     def forward(self, x):
-        x = self.fc1(x)
-        x = torch.matmul(x, self.fc2.weight.t()) + self.fc2.bias
-        x = torch.matmul(x, self.fc3.weight.t()) + self.fc3.bias
+        # Pass input through first convolutional layer and apply ReLU
+        x = F.relu(self.conv1(x))
+        # Apply max pooling
+        x = self.pool(x)
+        # Pass input through second convolutional layer and apply ReLU
+        x = F.relu(self.conv2(x))
+        # Apply max pooling
+        x = self.pool(x)
+        # Flatten the output for the fully connected layer
+        x = torch.flatten(x, start_dim=1)
+        # Pass through fully connected layer
+        x = self.fc(x)
         return x
 
-model = Net()
+# Instantiate the model
+model = SimpleCNN()
+
+# Switch the model to evaluation mode
+model.eval()
+
+# Define a dummy input with the same shape as the model's input
+dummy_input = torch.randn(1, 1, 28, 28)  # Example: batch size = 1, channels = 1, height = 28, width = 28
+
+# Export the model to ONNX format
+onnx_file_path = "conv.onnx"
+torch.onnx.export(
+    model,                      # Model to export
+    dummy_input,                # Dummy input for tracing
+    onnx_file_path,             # Path to save the ONNX file
+    export_params=True,         # Store the parameters in the ONNX model
+    opset_version=11,           # ONNX version to use
+    do_constant_folding=True,   # Optimize constant folding for inference
+    input_names=['input'],      # Name of the input node
+    output_names=['output'],    # Name of the output node
+    dynamic_axes={              # Allow variable batch sizes
+        'input': {0: 'batch_size'},
+        'output': {0: 'batch_size'}
+    }
+)
 
 
 
 
 
+
+##########################################################################################################
 # class Net(nn.Module):
 #     def __init__(self):
 #         super().__init__()
@@ -96,21 +157,21 @@ model = Net()
 #         return x
 
 
-model = Net()
+# model = Net()
 
-dummy_input = torch.randn(1, 28 * 28)  # Batch size of 1
-# print("dummy_input:", dummy_input)
-onnx_file_path = "neural_network.onnx"  # Desired output file name
-torch.onnx.export(model,               # Model being exported
-                  dummy_input,       # Model input (or a tuple for multiple inputs)
-                  onnx_file_path,    # Where to save the model
-                  export_params=True,  # Store the trained parameter weights inside the model file
-                  opset_version=11,   # ONNX version to export the model to
-                  do_constant_folding=True,  # Whether to execute constant folding for optimization
-                  input_names=['input'],   # Name of the input layer
-                  output_names=['output'],  # Name of the output layer
-                  dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
-                                'output': {0: 'batch_size'}})
+# dummy_input = torch.randn(1, 28 * 28)  # Batch size of 1
+# # print("dummy_input:", dummy_input)
+# onnx_file_path = "neural_network.onnx"  # Desired output file name
+# torch.onnx.export(model,               # Model being exported
+#                   dummy_input,       # Model input (or a tuple for multiple inputs)
+#                   onnx_file_path,    # Where to save the model
+#                   export_params=True,  # Store the trained parameter weights inside the model file
+#                   opset_version=11,   # ONNX version to export the model to
+#                   do_constant_folding=True,  # Whether to execute constant folding for optimization
+#                   input_names=['input'],   # Name of the input layer
+#                   output_names=['output'],  # Name of the output layer
+#                   dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
+#                                 'output': {0: 'batch_size'}})
 
 
 
