@@ -1,4 +1,3 @@
-# parser.py
 
 import onnx
 import numpy as np
@@ -56,12 +55,10 @@ class ONNXParser:
 
             # The constant node is created automatically when adding a scalar to a tensor (There are also other cases)
             if node.op_type == "Constant":
-                # Extract data type, raw data, and dimensions
                 scalar_data_type = node.attribute[0].t.data_type  # Data type as integer code
                 scalar_raw_data = node.attribute[0].t.raw_data  # Raw binary data
                 dims = node.attribute[0].t.dims  # Tensor dimensions
                 if len(dims) != 0:
-                    # Ensure all dimensions are integers
                     dims = [int(dim) for dim in dims]
                     num_elements = int(np.prod(dims))  # Cast to int
                     format_char = self._get_data_type(scalar_data_type)
@@ -72,19 +69,15 @@ class ONNXParser:
                     if len(scalar_raw_data) != expected_bytes:
                         raise ValueError(f"Expected {expected_bytes} bytes for Constant node '{node.name}', but got {len(scalar_raw_data)} bytes.")
 
-                    # Unpack all elements as a flat list
                     values_flat = struct.unpack(format_char * num_elements, scalar_raw_data)
 
-                    # Reshape the flat list into nested lists based on dimensions
                     reshaped_values = np.reshape(values_flat, dims).tolist()
 
                     for out in node.output:
-                        # Assign reshaped values to the output tensor
                         self.constant_values[out] = reshaped_values
                         outputs.append({'name': out, 'shape': list(dims)})
                         self.intermediate_tensors_shapes[out] = list(dims)
 
-                        # Assign the 'value' attribute as the nested list of values
                         attributes.append({'name': 'value', 'value': reshaped_values})
                 else:
                     for out in node.output:
@@ -145,13 +138,11 @@ class ONNXParser:
                 # Assume axis=0
                 axis = 0
 
-                # Initialize output_shape based on the first input tensor
                 first_input = node.input[0]
                 first_input_shape = self.intermediate_tensors_shapes.get(first_input)
 
                 output_shape = first_input_shape.copy()
 
-                # Iterate over all input tensors to compute the output shape
                 for input_name in node.input:
                     input_shape = self.intermediate_tensors_shapes.get(input_name)
 
@@ -171,7 +162,7 @@ class ONNXParser:
                 if new_shape == -1:
                     shape_tensor_out = [1]
                 else:
-                    shape_tensor_out = list(new_shape)  # Ensure list
+                    shape_tensor_out = list(new_shape)
 
                 inputs.append({'name': node.input[0], 'shape': shape_tensor_input})
                 inputs.append({'name': node.input[1], 'shape': [1]})  # Assuming scalar
@@ -180,7 +171,6 @@ class ONNXParser:
                 current_shape = shape_tensor_out.copy()
 
             elif node.op_type == "Flatten":
-                # Retrieve the axis attribute
                 axis_attribute = None
                 for attribute in node.attribute:
                     if attribute.name == 'axis':
@@ -188,21 +178,15 @@ class ONNXParser:
                         break
                 if axis_attribute is None:
                     raise ValueError(f"Flatten node '{node.name}' is missing the 'axis' attribute.")
-                # Enforce axis=0
                 if axis_attribute != 1:
                     raise ValueError(f"Axis attribute value of {node.name} node is not equal to 1.")
-                # Compute the flattened dimension by collapsing all dimensions from axis=0 onward
                 flattened_dim = 1
                 for dim in current_shape:
                     flattened_dim *= dim
-                # Define the output shape: [flattened_dim]
                 shape_tensor_out = [flattened_dim]
-                # Append input details
                 inputs.append({'name': node.input[0], 'shape': current_shape})
-                # Append output details
                 outputs.append({'name': node.output[0], 'shape': shape_tensor_out})
                 self.intermediate_tensors_shapes[node.output[0]] = shape_tensor_out.copy()
-                # Record the axis attribute (optional, based on your library's needs)
                 attributes.append({'name': 'axis', 'value': axis_attribute})
 
 
@@ -234,13 +218,11 @@ class ONNXParser:
                 current_shape = shape_tensor_out.copy()
 
             elif node.op_type == "Conv":
-                # Retrieve shapes
                 shape_tensor_input = current_shape.copy()
                 shape_weights = self.initializer_shapes.get(node.input[1])
                 shape_bias = self.initializer_shapes.get(node.input[2]) if node.input[2] else None
-                # shape_kernel =  [shape_weights[2], shape_weights[3]]
 
-                # Extract attributes with defaults
+                # defaults
                 pads = [0, 0, 0, 0]  # [pad_top, pad_left, pad_bottom, pad_right]
                 strides = [1, 1]
                 dilations = [1, 1]
@@ -313,7 +295,6 @@ class ONNXParser:
                 stride_h, stride_w = strides
                 pad_top, pad_left, pad_bottom, pad_right = pads
 
-                # Compute output dimensions
                 if ceil_mode:
                     height_out = math.ceil(((height_in + pad_top + pad_bottom) - kernel_height) / stride_h) + 1
                     width_out = math.ceil(((width_in + pad_left + pad_right) - kernel_width) / stride_w) + 1
@@ -326,7 +307,6 @@ class ONNXParser:
                 inputs.append({'name': node.input[0], 'shape': shape_tensor_input})
                 outputs.append({'name': node.output[0], 'shape': shape_tensor_output})
                 current_shape = output_shape.copy()
-                # store attributes for use in operators
                 attributes = {
                     'pads': pads,
                     'strides': strides,
@@ -404,7 +384,7 @@ class ONNXParser:
                 inputs.append({'name': node.input[0], 'shape': shape_tensor_input})
                 outputs.append({'name': node.output[0], 'shape': shape_tensor_output})
 
-                # Check if a mask is present
+                # mask present?
                 if len(node.output) > 1:
                     outputs.append({'name': node.output[1], 'shape': shape_tensor_mask})
 
