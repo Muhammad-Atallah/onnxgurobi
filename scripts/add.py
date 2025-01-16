@@ -1,10 +1,12 @@
-from itertools import product
 import numpy as np
+from itertools import product
 from base_operator import BaseOperator
+from utils import _node_to_string
 
 class AddOperator(BaseOperator):
     def __init__(self, node, initializers):
         super().__init__(node, initializers)
+        self.node = node
         self.input1 = node["input"][0]["name"]
         self.input2 = node["input"][1]["name"]      # Scalar or tensor
         self.output = node["output"][0]["name"]
@@ -14,6 +16,7 @@ class AddOperator(BaseOperator):
         self.initializers = node["initializers"]
 
     def apply_constraints(self, gurobi_model, variables):
+        print(_node_to_string(self.node))
         var_input1 = self.initializers.get(self.input1)
         if var_input1 is None:
             var_input1 = variables.get(self.input1)

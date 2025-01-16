@@ -8,13 +8,13 @@ from gemm import GemmOperator
 from gurobipy import GRB
 
 def main():
-    onnx_model_path = "nn_flatten_gemm_matmul.onnx"
+    onnx_model_path = "neural_network.onnx"
     converter = ONNXToGurobi(onnx_model_path)
     converter.build_model()
 
     # Prepare the input data
     import numpy as np
-    dummy_input = np.random.randn(1, 10).astype(np.float32)
+    dummy_input = np.random.randn(1, 28*28).astype(np.float32)
 
     # Retrieve the Gurobi model and variables
     gurobi_model = converter.get_gurobi_model()

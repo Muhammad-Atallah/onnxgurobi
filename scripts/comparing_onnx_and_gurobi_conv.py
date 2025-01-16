@@ -12,7 +12,7 @@ def main():
 
     # Prepare the input data
     import numpy as np
-    dummy_input = np.random.randn(1, 1, 28, 28).astype(np.float32)
+    dummy_input = np.random.randn(1, 28*28).astype(np.float32)
     input_shape = dummy_input.shape  # (1, 1, 4, 4)
 
     # Retrieve the Gurobi model and variables
