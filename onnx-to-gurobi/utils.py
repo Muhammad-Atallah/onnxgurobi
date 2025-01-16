@@ -3,7 +3,7 @@ def _node_to_string(node):
     type = node.get("type")
     inputs = ", ".join(f"name: {inp['name']}, shape: {inp.get('shape')}" for inp in node.get("input"))
     outputs = ", ".join(f"name: {out['name']}, shape: {out.get('shape')}" for out in node.get("output"))
-    attributes_str = ", ".join(f"{key}: {value}" for key, value in node.get("attributes").items())
+    attributes_str = ", ".join(f"name: {attr['name']}, value: {attr['value']}"for attr in node.get("attributes"))
 
     return (
         f"Node(Name: {name}, Type: {type}, "
