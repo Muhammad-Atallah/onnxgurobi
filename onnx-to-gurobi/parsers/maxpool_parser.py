@@ -39,13 +39,14 @@ class MaxPoolParser(BaseParser):
         outputs = [{'name': node.output[0], 'shape': shape_tensor_output}]
         parser.current_shape = shape_tensor_output.copy()
 
-        attributes = {
-            'kernel_shape': kernel_shape,
-            'strides': strides,
-            'pads': pads,
-            'ceil_mode': ceil_mode,
-            'dilations': dilations
-        }
+        attributes = [
+            {"name": "kernel_shape", "value": kernel_shape},
+            {"name": "strides", "value": strides},
+            {"name": "pads", "value": pads},
+            {"name": "ceil_mode", "value": ceil_mode},
+            {"name": "dilations", "value": dilations}
+        ]
+
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,

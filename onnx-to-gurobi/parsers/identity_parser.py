@@ -13,7 +13,7 @@ class IdentityParser(BaseParser):
 
         inputs.append({'name': node.input[0], 'shape': input_shape})
         outputs.append({'name': node.output[0], 'shape': output_shape})
-        attributes.append({'value': input_values})
+        attributes.append({'name': 'Identity', 'value': input_values})
 
 
         parser.nodes.append({

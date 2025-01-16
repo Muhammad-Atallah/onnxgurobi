@@ -15,10 +15,11 @@ class DropoutParser(BaseParser):
                 ratio = attr.f
             elif attr.name == 'training_mode':
                 training_mode = attr.i
-        attributes = {
-            'ratio': ratio,
-            'training_mode': training_mode
-        }
+        attributes = [
+            {"name": "ratio", "value": ratio},
+            {"name": "training_mode", "value": training_mode}
+        ]
+
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,

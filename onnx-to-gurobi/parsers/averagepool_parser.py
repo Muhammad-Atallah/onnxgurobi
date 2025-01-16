@@ -41,14 +41,15 @@ class AveragePoolParser(BaseParser):
         inputs = [{'name': node.input[0], 'shape': shape_tensor_input}]
         outputs = [{'name': node.output[0], 'shape': shape_tensor_output}]
 
-        attributes = {
-            'kernel_shape': kernel_shape,
-            'strides': strides,
-            'pads': pads,
-            'ceil_mode': ceil_mode,
-            'dilations': dilations,
-            'count_include_pad': count_include_pad
-        }
+        attributes = [
+            {"name": "kernel_shape", "value": kernel_shape},
+            {"name": "strides", "value": strides},
+            {"name": "pads", "value": pads},
+            {"name": "ceil_mode", "value": ceil_mode},
+            {"name": "dilations", "value": dilations},
+            {"name": "count_include_pad", "value": count_include_pad}
+        ]
+
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,
