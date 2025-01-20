@@ -150,7 +150,7 @@ class Net(nn.Module):
 model = Net()
 
 dummy_input = torch.randn(1, 28 * 28)  # Batch size of 1
-onnx_file_path = "neural_network.onnx"  # Desired output file name
+onnx_file_path = "simple_add.onnx"  # Desired output file name
 torch.onnx.export(model,               # Model being exported
                   dummy_input,       # Model input (or a tuple for multiple inputs)
                   onnx_file_path,    # Where to save the model

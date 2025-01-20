@@ -19,3 +19,11 @@ class UnsqueezeParser(BaseParser):
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })
+
+    def _unsqueeze_shape(self, input_shape, axes):
+        output_shape = input_shape.copy()
+        for axis in sorted(axes):
+            if axis < 0:
+                axis += len(output_shape) + 1
+            output_shape.insert(axis, 1)
+        return output_shape
