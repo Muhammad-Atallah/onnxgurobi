@@ -8,7 +8,7 @@ from gemm import GemmOperator
 from gurobipy import GRB
 
 def main():
-    onnx_model_path = "neural_network.onnx"
+    onnx_model_path = "simple_dd.onnx"
     converter = ONNXToGurobi(onnx_model_path)
     converter.build_model()
 

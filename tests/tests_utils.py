@@ -2,7 +2,6 @@ import unittest
 import numpy as np
 import onnxruntime as ort
 from gurobipy import GRB
-from onnx_to_gurobi.model_builder import ONNXToGurobi
 
 def run_onnx_model(model_path, input_data):
     """
