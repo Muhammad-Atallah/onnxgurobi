@@ -1,7 +1,7 @@
 import numpy as np
 from gurobipy import quicksum
 from itertools import product
-from base_operator import BaseOperator
+from .base_operator import BaseOperator
 from ..utils import _node_to_string
 class GemmOperator(BaseOperator):
     """

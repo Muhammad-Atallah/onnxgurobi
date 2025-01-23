@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 import onnxruntime as ort
 from gurobipy import GRB
-from onnx_to_gurobi import ONNXToGurobi
+from onnx_to_gurobi.model_builder import ONNXToGurobi
 
 def run_onnx_model(model_path, input_data):
     """
@@ -69,10 +69,10 @@ def compare_models(model_path, input_data, rtol=1e-4, atol=1e-4):
 
     """
     # Run model with ONNX Runtime
-    onnx_outputs = self.run_onnx_model(model_path, input_data)
+    onnx_outputs = run_onnx_model(model_path, input_data)
 
     # Run model with Gurobi
-    gurobi_outputs = self.solve_gurobi_model(model_path, input_data)
+    gurobi_outputs = solve_gurobi_model(model_path, input_data)
 
     # Compare each output
     for i in range(len(onnx_outputs)):

@@ -1,7 +1,7 @@
 import numpy as np
 from gurobipy import GRB
 from itertools import product
-from base_operator import BaseOperator
+from .base_operator import BaseOperator
 from ..utils import _node_to_string
 
 class ReLUOperator(BaseOperator):

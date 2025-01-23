@@ -1,7 +1,7 @@
 import struct
 import numpy as np
-from base_parser import BaseParser
-from utils import _get_data_type
+from .base_parser import BaseParser
+from ..utils import _get_data_type
 
 class ConstantParser(BaseParser):
     """

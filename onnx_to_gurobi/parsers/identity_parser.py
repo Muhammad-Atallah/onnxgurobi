@@ -1,4 +1,4 @@
-from base_parser import BaseParser
+from .base_parser import BaseParser
 import numpy as np
 
 class IdentityParser(BaseParser):

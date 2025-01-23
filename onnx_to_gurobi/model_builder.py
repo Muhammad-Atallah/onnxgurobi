@@ -1,8 +1,8 @@
 from itertools import product
 from gurobipy import Model, GRB
 from .operators.operator_factory import OperatorFactory
-from parser import ONNXParser
-from utils import _generate_indices
+from .parser import ONNXParser
+from .utils import _generate_indices
 
 class ONNXToGurobi:
     """

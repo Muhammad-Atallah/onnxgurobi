@@ -1,6 +1,6 @@
 import numpy as np
 from itertools import product
-from base_operator import BaseOperator
+from .base_operator import BaseOperator
 from ..utils import _node_to_string
 
 class BatchNormalization(BaseOperator):

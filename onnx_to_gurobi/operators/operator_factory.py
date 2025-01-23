@@ -1,12 +1,12 @@
-from add import AddOperator
-from gemm import GemmOperator
-from matmul import MatMul
-from relu import ReLUOperator
-from sub import SubOperator
-from concat import ConcatOperator
-from reshape import ReshapeOperator
-from flatten import FlattenOperator
-from conv import ConvOperator
+from .add import AddOperator
+from .gemm import GemmOperator
+from .matmul import MatMul
+from .relu import ReLUOperator
+from .sub import SubOperator
+from .concat import ConcatOperator
+from .reshape import ReshapeOperator
+from .flatten import FlattenOperator
+from .conv import ConvOperator
 
 class OperatorFactory:
     """

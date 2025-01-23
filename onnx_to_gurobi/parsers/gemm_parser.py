@@ -1,4 +1,4 @@
-from base_parser import BaseParser
+from .base_parser import BaseParser
 import onnx
 
 class GemmParser(BaseParser):
@@ -28,10 +28,10 @@ class GemmParser(BaseParser):
             - Updates `parser.current_shape` with the shape of the output.
             - Appends a new entry to `parser.nodes` describing the Gemm node.
         """
-        shape_input = [shape_weights[1]]
-        shape_output = [shape_bias[0]]
         shape_weights = list(parser.initializer_shapes.get(node.input[1], [1]))
         shape_bias = list(parser.initializer_shapes.get(node.input[2], [1]))
+        shape_input = [shape_weights[1]]
+        shape_output = [shape_bias[0]]
         parser.current_shape = shape_output.copy()
 
         inputs = [

@@ -95,7 +95,7 @@ def _unsqueeze_shape(input_shape, axes):
     return output_shape
 
 
-def _generate_indices(self, shape):
+def _generate_indices(shape):
     """
     Generates index tuples for multi-dimensional Gurobi variables.
 

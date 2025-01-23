@@ -1,4 +1,4 @@
-from base_parser import BaseParser
+from .base_parser import BaseParser
 from ..utils import _unsqueeze_shape
 
 class UnsqueezeParser(BaseParser):

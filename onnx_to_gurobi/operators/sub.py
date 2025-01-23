@@ -1,6 +1,6 @@
 from itertools import product
 import numpy as np
-from base_operator import BaseOperator
+from .base_operator import BaseOperator
 from ..utils import _node_to_string
 
 class SubOperator(BaseOperator):
