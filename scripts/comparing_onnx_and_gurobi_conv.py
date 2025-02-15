@@ -2,11 +2,11 @@
 
 import onnx
 import gurobipy
-from model_builder import ONNXToGurobi
+from onnxToGurobi import ONNXToGurobi
 from gurobipy import GRB
 
 def main():
-    onnx_model_path = "neural_network.onnx"
+    onnx_model_path = "simple_dd.onnx"
     converter = ONNXToGurobi(onnx_model_path)
     converter.build_model()
 

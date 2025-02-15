@@ -2,7 +2,7 @@
 
 import onnx
 import gurobipy
-from model_builder import ONNXToGurobi
+from onnxToGurobi import ONNXToGurobi
 from parser import ONNXParser
 from gemm import GemmOperator
 from gurobipy import GRB

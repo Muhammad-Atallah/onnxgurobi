@@ -1,0 +1,34 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onnx_to_gurobi"
+version = "0.1.0"
+description = "The onnx_to_gurobi is a Python library that creates Gurobi models for neural networks in ONNX format."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { file = "LICENSE.txt" }
+authors = [
+  { name = "Muhammad Sabri Atallah", email = "muhammad.sabri@outlook.com" }
+]
+dependencies = [
+    "numpy>=1.24.3",
+    "onnx>=1.12",
+    "onnxruntime>=1.19.2",
+    "gurobipy>=11.0.3",
+    "torch>=2.5.1"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+"Homepage" = "https://yourhomepage.example.com/"
+"Repository" = "https://github.com/yourusername/onnx_gurobi"
