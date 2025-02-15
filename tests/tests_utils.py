@@ -1,85 +1,75 @@
-import unittest
 import numpy as np
 import onnxruntime as ort
 from gurobipy import GRB
-from onnx_to_gurobi.model_builder import ONNXToGurobi
+from onnx_to_gurobi.onnxToGurobi import ONNXToGurobi
 
-def run_onnx_model(model_path, input_data):
+def run_onnx_model(model_path, input_data, input_tensor_name='input'):
     """
-    Run an ONNX model using onnxruntime and return the outputs.
-
+    Runs an ONNX model with the given input and returns its first output.
     """
     session = ort.InferenceSession(model_path)
+    onnx_outputs = session.run(None, {input_tensor_name: input_data})
+    return onnx_outputs[0]
 
-    if isinstance(input_data, dict):
-        feed_dict = {}
-        for i, input_meta in enumerate(session.get_inputs()):
-            feed_dict[input_meta.name] = input_data[input_meta.name]
-    else:
-        input_name = session.get_inputs()[0].name
-        feed_dict = {input_name: input_data}
-
-    outputs = session.run(None, feed_dict)
-    return outputs
-
-def solve_gurobi_model(model_path, input_data):
+def solve_gurobi_model(model_path, input_data, input_tensor_name='input', output_tensor_name='output'):
     """
-    Convert the ONNX model to a Gurobi model, set input variables, solve,
-    and retrieve the outputs.
-
+    Converts an ONNX model to a Gurobi model, assigns input values, optimizes, and returns the output.
     """
     converter = ONNXToGurobi(model_path)
     converter.build_model()
 
-    input_tensors = converter.parser.graph.input
+    dummy_input = input_data
+    input_shape = dummy_input.shape
 
-    if isinstance(input_data, dict):
-        for input_info in input_tensors:
-            tensor_name = input_info.name
-            var = converter.variables[tensor_name]
-            data_array = input_data[tensor_name]
+    # Set dummy input values in the Gurobi model.
+    input_vars = converter.variables.get(input_tensor_name)
+    if input_vars is None:
+        raise ValueError(f"No input variables found for '{input_tensor_name}'.")
+    
+    for idx, var in input_vars.items():
+        if isinstance(idx, int):
+            md_idx = np.unravel_index(idx, input_shape[1:])  # Exclude batch dimension
+        elif isinstance(idx, tuple):
+            if len(idx) < len(input_shape) - 1:
+                idx = (0,) * (len(input_shape) - 1 - len(idx)) + idx
+            md_idx = idx
+        else:
+            raise ValueError(f"Unexpected index type: {type(idx)}")
+        value = float(dummy_input[0, *md_idx])
+        var.lb = value
+        var.ub = value
 
-            for idx, _ in np.ndenumerate(data_array):
-                var[idx].start = float(data_array[idx])
-    else:
-        tensor_name = input_tensors[0].name
-        var = converter.variables[tensor_name]
-        for idx, _ in np.ndenumerate(input_data):
-            var[idx].start = float(input_data[idx])
+    gurobi_model = converter.get_gurobi_model()
+    gurobi_model.optimize()
+    if gurobi_model.status != GRB.OPTIMAL:
+        raise ValueError(f"Optimization ended with status {gurobi_model.status}.")
 
-    converter.model.setParam('OutputFlag', 0)
-    converter.model.optimize()
+    # Extract the output from the Gurobi model.
+    output_vars = converter.variables.get(output_tensor_name)
+    if output_vars is None:
+        raise ValueError(f"No output variables found for '{output_tensor_name}'.")
+    output_shape = converter.parser.input_output_tensors_shapes[output_tensor_name]
+    gurobi_outputs = np.zeros([1] + output_shape, dtype=np.float32)
+    
+    for idx, var in output_vars.items():
+        if isinstance(idx, int):
+            md_idx = np.unravel_index(idx, output_shape)
+        elif isinstance(idx, tuple):
+            md_idx = idx
+        else:
+            raise ValueError(f"Unexpected index type in output: {type(idx)}")
+        gurobi_outputs[(0,) + md_idx] = var.x
 
-    outputs = []
-    for output_info in converter.parser.graph.output:
-        out_name = output_info.name
-        out_var = converter.variables[out_name]
-        out_shape = converter.parser.input_output_tensors_shapes[out_name]
+    return gurobi_outputs
 
-        out_array = np.zeros(out_shape, dtype=np.float32)
-        for idx in np.ndindex(*out_shape):
-            out_array[idx] = out_var[idx].X
-        outputs.append(out_array)
-
-    return outputs
-
-def compare_models(model_path, input_data, rtol=1e-4, atol=1e-4):
+def compare_models(model_path, input_data, input_tensor_name='input', output_tensor_name='output', atol=1e-5):
     """
-    Run both the ONNX and Gurobi models and compare outputs within a tolerance.
-
+    Runs both the ONNX model and the Gurobi model, then asserts that their outputs are close.
     """
-    # Run model with ONNX Runtime
-    onnx_outputs = run_onnx_model(model_path, input_data)
-
-    # Run model with Gurobi
-    gurobi_outputs = solve_gurobi_model(model_path, input_data)
-
-    # Compare each output
-    for i in range(len(onnx_outputs)):
-        np.testing.assert_allclose(
-            onnx_outputs[i],
-            gurobi_outputs[i],
-            rtol=rtol,
-            atol=atol,
-            err_msg=f"Mismatch in output {i} for model: {model_path}"
-        )
+    onnx_output = run_onnx_model(model_path, input_data, input_tensor_name)
+    gurobi_output = solve_gurobi_model(model_path, input_data, input_tensor_name, output_tensor_name)
+    
+    if onnx_output.shape != gurobi_output.shape:
+        raise ValueError(f"Shape mismatch: ONNX {onnx_output.shape} vs Gurobi {gurobi_output.shape}")
+    
+    np.testing.assert_allclose(onnx_output, gurobi_output, atol=atol)
