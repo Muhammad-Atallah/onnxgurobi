@@ -6,30 +6,37 @@ from .utils import _generate_indices
 
 class ONNXToGurobi:
     """
-    Converts an ONNX model to a Gurobi model by parsing nodes and creating
-    corresponding constraints for each operator.
+    Converts an ONNX model to a Gurobi optimization model by transforming the ONNX
+    representation into an internal representation and then constructing the corresponding
+    constraints for each operator.
 
     Attributes:
-        parser (ONNXParser): The parser responsible for reading the ONNX model and extracting nodes, initializers, and shapes.
         model (gurobipy.Model): The Gurobi model being constructed.
-        variables (dict): A mapping of tensor names to either Gurobi variables or constant values.
-        initializers (dict): Contains the initial values from the parsed ONNX model.
-        nodes (list): A list of dictionaries, each representing an ONNX node extracted by the parser.
-        operator_factory (OperatorFactory): Responsible for creating operator instances based on node types.
+        internal_onnx (InternalONNX): The internal representation of the parsed ONNX model,
+            containing initializers, nodes, and input/output tensor shapes.
+        initializers (dict): A dictionary containing the initial values extracted from the ONNX model.
+        nodes (list): A list of dictionaries, each representing an ONNX node with its associated data.
+        in_out_tensors_shapes (dict): A mapping of input and output tensor names to their shapes.
+        operator_factory (OperatorFactory): Factory for creating operator instances based on node types.
+        variables (dict): A mapping of tensor names to either Gurobi decision variables or constant values.
     """
-    def __init__(self, onnx_model_path):
+    def __init__(self, onnx_model_path: str):
         """
-        Initializes the ONNXToGurobi class with a path to an ONNX model.
+        Initializes the ONNXToGurobi converter with the given ONNX model file path.
+
+        This constructor loads the ONNX model, converts it into an internal representation,
+        and initializes the attributes required for building the Gurobi model.
 
         Args:
-            onnx_model_path (str): The path to the ONNX model file to be parsed.
+            onnx_model_path (str): The file path to the ONNX model to be converted.
         """
-        self.parser = ONNXParser(onnx_model_path)
         self.model = Model("NeuralNetwork")
-        self.variables = {}
-        self.initializers = self.parser.initializer_values
-        self.nodes = self.parser.nodes
+        self.internal_onnx = ONNXParser(onnx_model_path)._parse_model()
+        self.initializers = self.internal_onnx.initializers
+        self.nodes = self.internal_onnx.nodes
+        self.in_out_tensors_shapes = self.internal_onnx.in_out_tensors_shapes
         self.operator_factory = OperatorFactory()
+        self.variables = {}
 
     def create_variables(self):
         """
@@ -37,7 +44,7 @@ class ONNXToGurobi:
 
         """
         # Create variables for inputs and outputs
-        for tensor_name, shape in self.parser.input_output_tensors_shapes.items():
+        for tensor_name, shape in self.in_out_tensors_shapes.items():
             indices = _generate_indices(shape)
             self.variables[tensor_name] = self.model.addVars(
                 indices,

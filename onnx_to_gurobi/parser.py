@@ -1,9 +1,7 @@
-# parser.py
 import onnx
 import numpy as np
-import struct
-import math
 from .parsers.parser_factory import ParserFactory
+from .internalOnnx import InternalONNXRepresentation
 
 class ONNXParser:
     """
@@ -82,4 +80,6 @@ class ONNXParser:
         for node in self.graph.node:
             parser = self.node_parser_factory.get_parser(node.op_type)
             parser.parse(self, node, self)
+
+        return InternalONNXRepresentation(self)
 

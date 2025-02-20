@@ -48,7 +48,7 @@ def solve_gurobi_model(model_path, input_data, input_tensor_name='input', output
     output_vars = converter.variables.get(output_tensor_name)
     if output_vars is None:
         raise ValueError(f"No output variables found for '{output_tensor_name}'.")
-    output_shape = converter.parser.input_output_tensors_shapes[output_tensor_name]
+    output_shape = converter.in_out_tensors_shapes[output_tensor_name]
     gurobi_outputs = np.zeros([1] + output_shape, dtype=np.float32)
     
     for idx, var in output_vars.items():
