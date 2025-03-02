@@ -6,7 +6,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "onnx_to_gurobi"
+name = "onnxgurobi"
 version = "0.1.0"
 description = "The onnx_to_gurobi is a Python library that creates Gurobi models for neural networks in ONNX format."
 readme = "README.md"

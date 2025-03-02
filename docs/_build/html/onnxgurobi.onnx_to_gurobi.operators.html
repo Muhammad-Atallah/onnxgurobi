@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onnxgurobi.onnx_to_gurobi.operators package &mdash; ONNX-to-Gurobi Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="onnxgurobi.onnx_to_gurobi.parsers package" href="onnxgurobi.onnx_to_gurobi.parsers.html" />
+    <link rel="prev" title="onnxgurobi.onnx_to_gurobi package" href="onnxgurobi.onnx_to_gurobi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ONNX-to-Gurobi Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">onnxgurobi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="onnxgurobi.html">onnxgurobi package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="onnxgurobi.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.html">onnxgurobi.onnx_to_gurobi package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.html#module-onnxgurobi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ONNX-to-Gurobi Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">onnxgurobi</a></li>
+          <li class="breadcrumb-item"><a href="onnxgurobi.html">onnxgurobi package</a></li>
+          <li class="breadcrumb-item"><a href="onnxgurobi.onnx_to_gurobi.html">onnxgurobi.onnx_to_gurobi package</a></li>
+      <li class="breadcrumb-item active">onnxgurobi.onnx_to_gurobi.operators package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/onnxgurobi.onnx_to_gurobi.operators.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="onnxgurobi-onnx-to-gurobi-operators-package">
+<h1>onnxgurobi.onnx_to_gurobi.operators package<a class="headerlink" href="#onnxgurobi-onnx-to-gurobi-operators-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.add">
+<span id="onnxgurobi-onnx-to-gurobi-operators-add-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.add module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.add" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.add.</span></span><span class="sig-name descname"><span class="pre">AddOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/add.html#AddOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the element-wise addition operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.node">
+<span class="sig-name descname"><span class="pre">node</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.node" title="Link to this definition"></a></dt>
+<dd><p>A dictionary representing the ONNX node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input1">
+<span class="sig-name descname"><span class="pre">input1</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input1" title="Link to this definition"></a></dt>
+<dd><p>The name of the first input tensor or scalar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input2">
+<span class="sig-name descname"><span class="pre">input2</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input2" title="Link to this definition"></a></dt>
+<dd><p>The name of the second input tensor or scalar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input1_shape">
+<span class="sig-name descname"><span class="pre">input1_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input1_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the first input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input2_shape">
+<span class="sig-name descname"><span class="pre">input2_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input2_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the second input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing constant values for any node inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/add.html#AddOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints for the Add operation.</p>
+<p>This method encodes the element-wise addition of two inputs, which may be
+scalars or tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to either Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If any required input or output variable is missing,</p></li>
+<li><p><strong>or if tensor shapes do not match</strong><strong> (</strong><strong>for tensor-tensor addition</strong><strong>)</strong><strong>.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.base_operator">
+<span id="onnxgurobi-onnx-to-gurobi-operators-base-operator-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.base_operator module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.base_operator" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.base_operator.</span></span><span class="sig-name descname"><span class="pre">BaseOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/base_operator.html#BaseOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Serves as the abstract base class for all operator implementations.</p>
+<p>Each operator in the library should inherit from this class and implement the <cite>apply_constraints</cite> method,
+which is responsible for adding the corresponding Gurobi constraints.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator.apply_constraints">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/base_operator.html#BaseOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies operator-specific constraints to the Gurobi model.</p>
+<p>Subclasses must override this method to add
+the necessary constraints for the corresponding operator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The model to which constraints are added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – Maps tensor names to either Gurobi variables or
+constant values used during the constraint-building process.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.batch_normalization">
+<span id="onnxgurobi-onnx-to-gurobi-operators-batch-normalization-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.batch_normalization module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.batch_normalization" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.batch_normalization.</span></span><span class="sig-name descname"><span class="pre">BatchNormalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/batch_normalization.html#BatchNormalization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the BatchNormalization operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.name" title="Link to this definition"></a></dt>
+<dd><p>The node’s name in the ONNX graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.input" title="Link to this definition"></a></dt>
+<dd><p>Name of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.weights">
+<span class="sig-name descname"><span class="pre">weights</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.weights" title="Link to this definition"></a></dt>
+<dd><p>Name of the scaling factor tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.bias" title="Link to this definition"></a></dt>
+<dd><p>Name of the bias tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.mean" title="Link to this definition"></a></dt>
+<dd><p>Name of the mean tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.variance">
+<span class="sig-name descname"><span class="pre">variance</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.variance" title="Link to this definition"></a></dt>
+<dd><p>Name of the variance tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.output" title="Link to this definition"></a></dt>
+<dd><p>Name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.shape_input_output">
+<span class="sig-name descname"><span class="pre">shape_input_output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.shape_input_output" title="Link to this definition"></a></dt>
+<dd><p>Shape of the input and output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary of initial values for known constants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.epsilon">
+<span class="sig-name descname"><span class="pre">epsilon</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.epsilon" title="Link to this definition"></a></dt>
+<dd><p>A small constant to avoid division by zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/batch_normalization.html#BatchNormalization.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies Gurobi constraints for the BatchNormalization operation.</p>
+<dl class="simple">
+<dt>It computes per-channel scaling and offset terms based on the formula:</dt><dd><p>a[channel] = weights[channel] / sqrt(variance[channel] + epsilon)
+b[channel] = bias[channel] - (weights[channel] * mean[channel]) / sqrt(variance[channel] + epsilon)</p>
+</dd>
+<dt>Then, for each element of the input, it creates a constraint ensuring:</dt><dd><p>output[idx] = a[channel] * input[idx] + b[channel]</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints are added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A mapping of tensor names to Gurobi variables or constants.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the input or output variables are not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.concat">
+<span id="onnxgurobi-onnx-to-gurobi-operators-concat-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.concat module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.concat" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.concat.</span></span><span class="sig-name descname"><span class="pre">ConcatOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/concat.html#ConcatOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the concatenation operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.inputs">
+<span class="sig-name descname"><span class="pre">inputs</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.inputs" title="Link to this definition"></a></dt>
+<dd><p>A list of input tensor names to be concatenated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.inputs_shapes">
+<span class="sig-name descname"><span class="pre">inputs_shapes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.inputs_shapes" title="Link to this definition"></a></dt>
+<dd><p>A list of shapes for each input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.axis">
+<span class="sig-name descname"><span class="pre">axis</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.axis" title="Link to this definition"></a></dt>
+<dd><p>The axis along which the inputs are concatenated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Defaults</span> <span class="pre">to</span> <span class="pre">0</span> <span class="pre">if</span> <span class="pre">no</span> <span class="pre">axis</span> <span class="pre">attribute</span> <span class="pre">is</span> <span class="pre">specified</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">node.</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/concat.html#ConcatOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints to encode the Concat operation.</p>
+<p>This method copies values from each input tensor into the correct portions
+of the output tensor along the specified concatenation axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to either Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If any of the required input variables or the output variable is missing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.conv">
+<span id="onnxgurobi-onnx-to-gurobi-operators-conv-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.conv module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.conv" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.conv.</span></span><span class="sig-name descname"><span class="pre">ConvOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/conv.html#ConvOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the 2D Convolution operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.input" title="Link to this definition"></a></dt>
+<dd><p>The name of the input tensor, with shape (channels, height_in, width_in).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.weights">
+<span class="sig-name descname"><span class="pre">weights</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.weights" title="Link to this definition"></a></dt>
+<dd><p>The name of the weights tensor, with shape (feature_maps, channels/group, kernel_height, kernel_width).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.bias" title="Link to this definition"></a></dt>
+<dd><p>The name of the bias tensor, if present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor, with shape (feature_maps, height_out, width_out).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.input_shape">
+<span class="sig-name descname"><span class="pre">input_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.input_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.pads">
+<span class="sig-name descname"><span class="pre">pads</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.pads" title="Link to this definition"></a></dt>
+<dd><p>Padding applied [top, left, bottom, right].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.strides">
+<span class="sig-name descname"><span class="pre">strides</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.strides" title="Link to this definition"></a></dt>
+<dd><p>The horizontal and vertical strides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.dilations">
+<span class="sig-name descname"><span class="pre">dilations</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.dilations" title="Link to this definition"></a></dt>
+<dd><p>The horizontal and vertical dilation factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.group">
+<span class="sig-name descname"><span class="pre">group</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.group" title="Link to this definition"></a></dt>
+<dd><p>Number of groups dividing input and output channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing constant values for any node inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/conv.html#ConvOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints to encode the convolution operation.</p>
+<p>Iterates over each element in the output tensor, computing the convolution
+sum from the corresponding part of the input tensor.
+This part is determined by stride, dilation, and padding attributes.
+If a bias tensor is present, it is added to each feature map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to either Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the input or output variables are not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.dropout">
+<span id="onnxgurobi-onnx-to-gurobi-operators-dropout-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.dropout module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.dropout" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.dropout.</span></span><span class="sig-name descname"><span class="pre">DropoutOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/dropout.html#DropoutOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the dropout operator in inference mode.</p>
+<p>In inference mode, dropout is disabled so that the input is passed through unchanged.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.node">
+<span class="sig-name descname"><span class="pre">node</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.node" title="Link to this definition"></a></dt>
+<dd><p>A dictionary representing the ONNX node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.input" title="Link to this definition"></a></dt>
+<dd><p>The name of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.mask">
+<span class="sig-name descname"><span class="pre">mask</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.mask" title="Link to this definition"></a></dt>
+<dd><p>The name of the mask tensor (unused in inference mode).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.input_shape">
+<span class="sig-name descname"><span class="pre">input_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.input_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.mask_shape">
+<span class="sig-name descname"><span class="pre">mask_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.mask_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the mask tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.ratio">
+<span class="sig-name descname"><span class="pre">ratio</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.ratio" title="Link to this definition"></a></dt>
+<dd><p>The dropout ratio (provided for reference, not used in inference mode).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.training_mode">
+<span class="sig-name descname"><span class="pre">training_mode</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.training_mode" title="Link to this definition"></a></dt>
+<dd><p>Forced to False, indicating that the operator functions only in inference mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/dropout.html#DropoutOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints for the dropout operation in inference mode.</p>
+<p>In inference mode, dropout is disabled and the operator functions as an identity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to either Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If any required input or output variable is missing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.flatten">
+<span id="onnxgurobi-onnx-to-gurobi-operators-flatten-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.flatten module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.flatten" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.flatten.</span></span><span class="sig-name descname"><span class="pre">FlattenOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/flatten.html#FlattenOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the Flatten operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.input" title="Link to this definition"></a></dt>
+<dd><p>The name of the input tensor to be flattened.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor after flattening.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.input_shape">
+<span class="sig-name descname"><span class="pre">input_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.input_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/flatten.html#FlattenOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints to encode the Flatten operation.</p>
+<p>This method verifies that the total number of elements in the input and output shapes match,
+and then maps each multidimensional index of the input to its corresponding flat index in the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the input or output variables are not found,</p></li>
+<li><p><strong>or if the total number</strong><strong> of </strong><strong>elements do not match between input and output.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.gemm">
+<span id="onnxgurobi-onnx-to-gurobi-operators-gemm-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.gemm module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.gemm" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.gemm.</span></span><span class="sig-name descname"><span class="pre">GemmOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/gemm.html#GemmOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the Gemm operator (General Matrix Multiplication).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.name" title="Link to this definition"></a></dt>
+<dd><p>The name of this node in the ONNX graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input1">
+<span class="sig-name descname"><span class="pre">input1</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input1" title="Link to this definition"></a></dt>
+<dd><p>The name of the primary input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input2">
+<span class="sig-name descname"><span class="pre">input2</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input2" title="Link to this definition"></a></dt>
+<dd><p>The name of the second input (weights).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input3">
+<span class="sig-name descname"><span class="pre">input3</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input3" title="Link to this definition"></a></dt>
+<dd><p>Optional name of the third input (bias), if present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input1_shape">
+<span class="sig-name descname"><span class="pre">input1_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input1_shape" title="Link to this definition"></a></dt>
+<dd><p>Shape of the primary input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input2_shape">
+<span class="sig-name descname"><span class="pre">input2_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input2_shape" title="Link to this definition"></a></dt>
+<dd><p>Shape of the second input (weights).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>Shape of the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary of initial values for any constant tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/gemm.html#GemmOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints to encode the Gemm operation.</p>
+<p>This method represents a matrix multiplication plus optional bias addition.
+It checks if the second input (weights) needs to be transposed and sums
+over the shared dimension to produce each output element. The bias is then
+added to each element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model in which constraints are created.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If input, output, or weights cannot be found,</p></li>
+<li><p><strong>or the weight's shape does not match the expected dimensions.</strong> – </p></li>
+<li><p><strong>IndexError</strong> – If an output index exceeds the bounds of the weight matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.matmul">
+<span id="onnxgurobi-onnx-to-gurobi-operators-matmul-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.matmul module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.matmul" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.matmul.</span></span><span class="sig-name descname"><span class="pre">MatMul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/matmul.html#MatMul"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the MatMul (matrix multiplication) operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input1">
+<span class="sig-name descname"><span class="pre">input1</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input1" title="Link to this definition"></a></dt>
+<dd><p>The name of the first (left-hand side) input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input2">
+<span class="sig-name descname"><span class="pre">input2</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input2" title="Link to this definition"></a></dt>
+<dd><p>The name of the second (right-hand side) input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input1_shape">
+<span class="sig-name descname"><span class="pre">input1_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input1_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the first input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input2_shape">
+<span class="sig-name descname"><span class="pre">input2_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input2_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the second input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary of initial values for any constant tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.constants">
+<span class="sig-name descname"><span class="pre">constants</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.constants" title="Link to this definition"></a></dt>
+<dd><p>A dictionary with additional constant values if not found in <cite>initializers</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/matmul.html#MatMul.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints to represent the matrix multiplication operation.</p>
+<p>This method retrieves the first input and the second input from the model or the initializers.
+If necessary, it transposes the second input to match the expected dimensions.
+It then loops through every element in the output tensor shape,
+constructing a summation of products of corresponding input elements and weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model in which constraints are created.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the second input’s initializer or constants data is missing,
+    or if the operator’s internal shapes are unexpected.</p></li>
+<li><p><strong>IndexError</strong> – If any dimension in the resulting weights array is out of
+    bounds for the required operation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.operator_factory">
+<span id="onnxgurobi-onnx-to-gurobi-operators-operator-factory-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.operator_factory module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.operator_factory" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.operator_factory.</span></span><span class="sig-name descname"><span class="pre">OperatorFactory</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/operator_factory.html#OperatorFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Factory for creating operator instances based on node types.</p>
+<p>This factory maintains a registry that maps ONNX node types to corresponding operator classes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory.node_handlers">
+<span class="sig-name descname"><span class="pre">node_handlers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory.node_handlers" title="Link to this definition"></a></dt>
+<dd><p>A mapping of ONNX operator to their respective operator classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory.create_operator">
+<span class="sig-name descname"><span class="pre">create_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/operator_factory.html#OperatorFactory.create_operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory.create_operator" title="Link to this definition"></a></dt>
+<dd><p>Creates and returns an operator instance corresponding to the node type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>initializers</strong> (<em>dict</em>) – A dictionary of initial values for any constant tensors (weights, biases, etc.).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the operator class associated with the node.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operator</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – If the node’s type is not found in the registry.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.relu">
+<span id="onnxgurobi-onnx-to-gurobi-operators-relu-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.relu module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.relu" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.relu.</span></span><span class="sig-name descname"><span class="pre">ReLUOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/relu.html#ReLUOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the ReLU (Rectified Linear Unit) operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.input" title="Link to this definition"></a></dt>
+<dd><p>The name of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.input_shape">
+<span class="sig-name descname"><span class="pre">input_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.input_shape" title="Link to this definition"></a></dt>
+<dd><p>Shape of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>Shape of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/relu.html#ReLUOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints to encode the ReLU operation.</p>
+<dl class="simple">
+<dt>This method encodes the piecewise linear ReLU function using teh following constraints:</dt><dd><ul class="simple">
+<li><p>Output &gt;= Input</p></li>
+<li><p>Output &gt;= 0</p></li>
+<li><p>Output &lt;= upper_bound</p></li>
+<li><p>Output &lt;= Input + upper_bound * (1 - binary_var)</p></li>
+<li><p>Output &lt;= upper_bound * binary_var</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to Gurobi variables or constant values.
+Expected to include a binary variable named “relu_binary_&lt;output&gt;” for this operator.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If input, output, or the required binary variable is missing from <cite>variables</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.reshape">
+<span id="onnxgurobi-onnx-to-gurobi-operators-reshape-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.reshape module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.reshape" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.reshape.</span></span><span class="sig-name descname"><span class="pre">ReshapeOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/reshape.html#ReshapeOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the reshape operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.input">
+<span class="sig-name descname"><span class="pre">input</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.input" title="Link to this definition"></a></dt>
+<dd><p>The name of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.input_shape">
+<span class="sig-name descname"><span class="pre">input_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.input_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the input tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/reshape.html#ReshapeOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints for the Reshape operation.</p>
+<p>This method enforces a one-to-one mapping between each element of the input
+tensor and the corresponding element of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the input or output variable is missing,</p></li>
+<li><p><strong>or if the total number</strong><strong> of </strong><strong>elements in input and output shapes do not match.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators.sub">
+<span id="onnxgurobi-onnx-to-gurobi-operators-sub-module"></span><h2>onnxgurobi.onnx_to_gurobi.operators.sub module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators.sub" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.operators.sub.</span></span><span class="sig-name descname"><span class="pre">SubOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/sub.html#SubOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator" title="onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOperator</span></code></a></p>
+<p>Implements the element-wise subtraction operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input1">
+<span class="sig-name descname"><span class="pre">input1</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input1" title="Link to this definition"></a></dt>
+<dd><p>The name of the first input tensor or scalar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input2">
+<span class="sig-name descname"><span class="pre">input2</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input2" title="Link to this definition"></a></dt>
+<dd><p>The name of the second input tensor or scalar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.output" title="Link to this definition"></a></dt>
+<dd><p>The name of the output tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input1_shape">
+<span class="sig-name descname"><span class="pre">input1_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input1_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the first input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input2_shape">
+<span class="sig-name descname"><span class="pre">input2_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input2_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the second input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.output_shape">
+<span class="sig-name descname"><span class="pre">output_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing constant values for any node inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.apply_constraints">
+<span class="sig-name descname"><span class="pre">apply_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gurobi_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/operators/sub.html#SubOperator.apply_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.apply_constraints" title="Link to this definition"></a></dt>
+<dd><p>Applies the Gurobi constraints for the Sub operation.</p>
+<p>This method encodes the element-wise subtraction of two inputs, which may be
+scalars or tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gurobi_model</strong> (<em>gurobipy.Model</em>) – The Gurobi model to which constraints should be added.</p></li>
+<li><p><strong>variables</strong> (<em>dict</em>) – A dictionary mapping tensor names to either Gurobi variables or constant values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If any required input or output variable is missing,
+    or if tensor shapes do not match (for tensor-tensor subtraction).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="onnxgurobi-onnx-to-gurobi-operators-unsqueeze-module">
+<h2>onnxgurobi.onnx_to_gurobi.operators.unsqueeze module<a class="headerlink" href="#onnxgurobi-onnx-to-gurobi-operators-unsqueeze-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.operators">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.operators" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="onnxgurobi.onnx_to_gurobi.html" class="btn btn-neutral float-left" title="onnxgurobi.onnx_to_gurobi package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="onnxgurobi.onnx_to_gurobi.parsers.html" class="btn btn-neutral float-right" title="onnxgurobi.onnx_to_gurobi.parsers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Muhammad Atallah.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

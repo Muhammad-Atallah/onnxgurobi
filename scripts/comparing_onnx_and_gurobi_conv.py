@@ -2,11 +2,12 @@
 
 import onnx
 import gurobipy
-from onnxToGurobi import ONNXToGurobi
+# from onnxToGurobi import ONNXToGurobi
+from model_builder import ONNXToGurobi
 from gurobipy import GRB
 
 def main():
-    onnx_model_path = "simple_dd.onnx"
+    onnx_model_path = "simple_add.onnx"
     converter = ONNXToGurobi(onnx_model_path)
     converter.build_model()
 

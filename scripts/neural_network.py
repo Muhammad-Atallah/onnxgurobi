@@ -136,14 +136,16 @@ import torch.onnx
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(28*28, 100)
-
-
+        self.weight = nn.Parameter(torch.randn(100, 28*28))
+        self.bias = nn.Parameter(torch.randn(100))
+    
     def forward(self, x):
-        x = self.fc1(x)
-        x = x + 0.1
-
-
+        # Suppose you want to set alpha=2 and beta=0.5
+        alpha = 2.0
+        beta = 0.5
+        # x here should be of shape (batch_size, 28*28)
+        x = torch.addmm(self.bias * beta, x, self.weight.t(), beta=beta, alpha=alpha)
+        x = x + 0.1  # The additional bias can also be thought of as a further addition.
         return x
 
 

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onnxgurobi.onnx_to_gurobi.operators.gemm &mdash; ONNX-to-Gurobi Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            ONNX-to-Gurobi Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">onnxgurobi</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">ONNX-to-Gurobi Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">onnxgurobi.onnx_to_gurobi.operators.gemm</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for onnxgurobi.onnx_to_gurobi.operators.gemm</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">quicksum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseOperator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_node_to_string</span>
+<div class="viewcode-block" id="GemmOperator">
+<a class="viewcode-back" href="../../../../onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GemmOperator</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements the Gemm operator (General Matrix Multiplication).</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str): The name of this node in the ONNX graph.</span>
+<span class="sd">        input1 (str): The name of the primary input tensor.</span>
+<span class="sd">        input2 (str): The name of the second input (weights).</span>
+<span class="sd">        input3 (str): Optional name of the third input (bias), if present.</span>
+<span class="sd">        output (str): The name of the output tensor.</span>
+<span class="sd">        input1_shape (list): Shape of the primary input.</span>
+<span class="sd">        input2_shape (list): Shape of the second input (weights).</span>
+<span class="sd">        output_shape (list): Shape of the output.</span>
+<span class="sd">        initializers (dict): A dictionary of initial values for any constant tensors.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">initializers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Gemm operator with the node and initializers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:</span>
+<span class="sd">            &quot;name&quot;, &quot;type&quot;, &quot;input&quot;, &quot;output&quot;, &quot;attributes&quot;, &quot;initializers&quot;, and &quot;constants&quot;.</span>
+<span class="sd">            initializers (dict): A dictionary of initial values for any constant tensors (weights, biases, etc.).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">initializers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input1</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input2</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input3</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input1_shape</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;shape&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input2_shape</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;shape&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;shape&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initializers</span> <span class="o">=</span> <span class="n">initializers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;attributes&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="GemmOperator.apply_constraints">
+<a class="viewcode-back" href="../../../../onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.apply_constraints">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gurobi_model</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies the Gurobi constraints to encode the Gemm operation.</span>
+
+<span class="sd">        This method represents a matrix multiplication plus optional bias addition.</span>
+<span class="sd">        It checks if the second input (weights) needs to be transposed and sums</span>
+<span class="sd">        over the shared dimension to produce each output element. The bias is then</span>
+<span class="sd">        added to each element.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            gurobi_model (gurobipy.Model): The Gurobi model in which constraints are created.</span>
+<span class="sd">            variables (dict): A dictionary mapping tensor names to Gurobi variables or constant values.</span>
+
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If input, output, or weights cannot be found,</span>
+<span class="sd">            or the weight&#39;s shape does not match the expected dimensions.</span>
+<span class="sd">            IndexError: If an output index exceeds the bounds of the weight matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input2</span><span class="p">)</span>
+        <span class="n">bias</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">alpha</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="n">beta</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="n">var_input</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">input1</span><span class="p">]</span>
+        <span class="n">var_output</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">]</span>
+        <span class="n">var_input_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input1_shape</span>
+        <span class="n">var_output_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span>
+
+        <span class="k">if</span> <span class="n">var_input</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Variable for input &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">var_output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Variable for input &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Initializer for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input2</span><span class="si">}</span><span class="s2"> not found.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">gurobi_model</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">var_input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">var_input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">T</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Unexpected weights shape </span><span class="si">{</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="n">sum_dim</span> <span class="o">=</span> <span class="n">var_input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">output_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">var_output_shape</span><span class="p">]))</span>
+
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">output_indices</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">batch_indices</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">batch_indices</span> <span class="o">=</span> <span class="p">()</span>
+            <span class="n">output_idx</span> <span class="o">=</span> <span class="n">idx</span>
+
+            <span class="k">if</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Index </span><span class="si">{</span><span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> is out of bounds for axis 1 with shape </span><span class="si">{</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="p">)</span>
+
+            <span class="n">expression</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span>
+                <span class="n">var_input</span><span class="p">[</span><span class="n">batch_indices</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span><span class="p">,)]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">batch_indices</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])])</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sum_dim</span><span class="p">)</span>
+            <span class="p">)</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+
+            <span class="n">gurobi_model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span>
+                <span class="n">var_output</span><span class="p">[</span><span class="n">output_idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">expression</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Gemm_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Muhammad Atallah.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

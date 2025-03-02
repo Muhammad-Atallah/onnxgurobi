@@ -26,7 +26,7 @@ class ONNXParser:
         Initializes the ONNXParser by loading the model and preparing data structures.
 
         Args:
-            onnx_model_path (str): Path to the ONNX file to be parsed.
+            onnx_model_path (str): Path to the ONNX file to be parsed
 
         """
         self.onnx_model = onnx.load(onnx_model_path)
@@ -51,7 +51,7 @@ class ONNXParser:
         the parser's `parse` method to update the `nodes` dictionary.
 
         Raises:
-            ValueError: If the ONNX model does not define any input tensors.
+            ValueError: If the ONNX model does not define any input tensors
         """
         for initializer in self.graph.initializer:
             initializer_array = onnx.numpy_helper.to_array(initializer)

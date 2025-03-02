@@ -15,10 +15,15 @@ class GemmOperator(BaseOperator):
         self.input2_shape = node["input"][1]["shape"]
         self.output_shape = node["output"][0]["shape"]
         self.initializers = initializers
+        self.attributes = node["attributes"]
 
     def apply_constraints(self, gurobi_model, variables):
         weights = self.initializers.get(self.input2)
         bias = self.initializers.get(self.input3, np.zeros(weights.shape[1]))
+        alpha =  self.attributes[0]['value']
+        beta =  self.attributes[0]['value']
+        print("THIS IS ALPHA:", alpha)
+        print("THIS IS BETA:", beta)
         var_input = variables[self.input1]
         var_output = variables[self.output]
         var_input_shape = self.input1_shape
@@ -51,7 +56,7 @@ class GemmOperator(BaseOperator):
             if idx[-1] >= weights.shape[1]:
                 raise IndexError(f"Index {idx[-1]} is out of bounds for axis 1 with size {weights.shape[1]} for node {self.name}")
 
-            expression = quicksum(var_input[batch_indices + (k,)] * float(weights[k, idx[-1]]) for k in range(sum_dim)) + float(bias[idx])
+            expression = quicksum(alpha * var_input[batch_indices + (k,)] * float(weights[k, idx[-1]]) for k in range(sum_dim)) + float(bias[idx])
 
             gurobi_model.addConstr(var_output[output_idx] == expression, name=f"Gemm_{self.output}_{'_'.join(map(str, idx))}")
 

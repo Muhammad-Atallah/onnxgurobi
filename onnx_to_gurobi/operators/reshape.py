@@ -64,16 +64,15 @@ class ReshapeOperator(BaseOperator):
 
         gurobi_model.update()
 
-        # Validate total number of elements
         input_total = np.prod(var_input_shape)
         output_total = np.prod(var_output_shape)
+
         if input_total != output_total:
             raise ValueError(
                 f"Error in {_node_to_string(self.node)}:"
                 f"Total elements mismatch: input has {input_total}, output has {output_total}."
             )
 
-        # Generate all indices for the output tensor
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
 
         for idx in output_indices:

@@ -40,6 +40,7 @@ class GemmOperator(BaseOperator):
         self.input2_shape = node["input"][1]["shape"]
         self.output_shape = node["output"][0]["shape"]
         self.initializers = initializers
+        self.attributes = node["attributes"]
 
     def apply_constraints(self, gurobi_model, variables):
         """
@@ -62,6 +63,8 @@ class GemmOperator(BaseOperator):
         """
         weights = self.initializers.get(self.input2)
         bias = self.initializers.get(self.input3, np.zeros(weights.shape[1]))
+        alpha =  self.attributes[0]['value']
+        beta =  self.attributes[0]['value']
         var_input = variables[self.input1]
         var_output = variables[self.output]
         var_input_shape = self.input1_shape
@@ -85,17 +88,15 @@ class GemmOperator(BaseOperator):
 
         gurobi_model.update()
 
-        # Checking if weights need to be transposed
         if weights.shape[0] != var_input_shape[-1]:
             if weights.shape[-1] == var_input_shape[-1]:
-                weights = weights.T  # Transpose the weights
+                weights = weights.T
             else:
                 raise ValueError(
                     f"Error in {_node_to_string(self.node)}:"
                     f"Unexpected weights shape {weights.shape}"
                 )
 
-        # Get the common dimension size for summation
         sum_dim = var_input_shape[-1]
 
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
@@ -107,7 +108,6 @@ class GemmOperator(BaseOperator):
                 batch_indices = ()
             output_idx = idx
 
-            # Ensure the last element is within bounds
             if idx[-1] >= weights.shape[1]:
                 raise IndexError(
                     f"Error in {_node_to_string(self.node)}:"
@@ -115,7 +115,7 @@ class GemmOperator(BaseOperator):
                 )
 
             expression = quicksum(
-                var_input[batch_indices + (k,)] * float(weights[k, idx[-1]])
+                var_input[batch_indices + (k,)] * float(weights[batch_indices + (k, idx[-1])])
                 for k in range(sum_dim)
             ) + float(bias[idx])
 
