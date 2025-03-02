@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onnxgurobi.onnx_to_gurobi.parsers package &mdash; ONNX-to-Gurobi Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="onnxgurobi.onnx_to_gurobi.operators package" href="onnxgurobi.onnx_to_gurobi.operators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ONNX-to-Gurobi Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">onnxgurobi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="onnxgurobi.html">onnxgurobi package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="onnxgurobi.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.html">onnxgurobi.onnx_to_gurobi package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.html#module-onnxgurobi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ONNX-to-Gurobi Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">onnxgurobi</a></li>
+          <li class="breadcrumb-item"><a href="onnxgurobi.html">onnxgurobi package</a></li>
+          <li class="breadcrumb-item"><a href="onnxgurobi.onnx_to_gurobi.html">onnxgurobi.onnx_to_gurobi package</a></li>
+      <li class="breadcrumb-item active">onnxgurobi.onnx_to_gurobi.parsers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/onnxgurobi.onnx_to_gurobi.parsers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="onnxgurobi-onnx-to-gurobi-parsers-package">
+<h1>onnxgurobi.onnx_to_gurobi.parsers package<a class="headerlink" href="#onnxgurobi-onnx-to-gurobi-parsers-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.add_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-add-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.add_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.add_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.add_parser.AddParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.add_parser.</span></span><span class="sig-name descname"><span class="pre">AddParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/add_parser.html#AddParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.add_parser.AddParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Add node.</p>
+<p>This parser extracts the necessary inputs and outputs, determines their
+shapes, and adds an entry to the parser’s node list representing the
+Add operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.add_parser.AddParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/add_parser.html#AddParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.add_parser.AddParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Add node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Add node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-averagepool-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.AveragePoolParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.</span></span><span class="sig-name descname"><span class="pre">AveragePoolParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/averagepool_parser.html#AveragePoolParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.AveragePoolParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX AveragePool node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+AveragePool operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.AveragePoolParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/averagepool_parser.html#AveragePoolParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.AveragePoolParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the AveragePool node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the AveragePool node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.base_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-base-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.base_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.base_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.base_parser.</span></span><span class="sig-name descname"><span class="pre">BaseParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/base_parser.html#BaseParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Serves as the abstract base class for all parser implementations.</p>
+<p>Each parser in the library should inherit from this class and implement the <cite>parses</cite> method,
+which is responsible for parsing the corresponding ONNX node and updating the node list
+used ultimately in adding constraints to the Gurobi model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser.parse">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/base_parser.html#BaseParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the corresponding node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-batch-normalization-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.BatchNormalization">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.</span></span><span class="sig-name descname"><span class="pre">BatchNormalization</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/batch_normalization_parser.html#BatchNormalization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.BatchNormalization" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX BatchNormalization node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+BatchNormalization operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.BatchNormalization.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/batch_normalization_parser.html#BatchNormalization.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.BatchNormalization.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the BatchNormalization node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the BatchNormalization node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.concat_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-concat-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.concat_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.concat_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.concat_parser.ConcatParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.concat_parser.</span></span><span class="sig-name descname"><span class="pre">ConcatParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/concat_parser.html#ConcatParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.concat_parser.ConcatParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Concat node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Concat operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.concat_parser.ConcatParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/concat_parser.html#ConcatParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.concat_parser.ConcatParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Concat node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Concat node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.constant_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-constant-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.constant_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.constant_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.constant_parser.ConstantParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.constant_parser.</span></span><span class="sig-name descname"><span class="pre">ConstantParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/constant_parser.html#ConstantParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.constant_parser.ConstantParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX ReLu node.</p>
+<p>This parser extracts the necessary inputs and outputs, determines their
+shapes, and adds an entry to the parser’s node list representing the
+Constant operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.constant_parser.ConstantParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/constant_parser.html#ConstantParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.constant_parser.ConstantParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Constant node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.constant_values</cite> with the value of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Constant node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.conv_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-conv-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.conv_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.conv_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.conv_parser.ConvParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.conv_parser.</span></span><span class="sig-name descname"><span class="pre">ConvParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/conv_parser.html#ConvParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.conv_parser.ConvParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Conv node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Conv operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.conv_parser.ConvParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/conv_parser.html#ConvParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.conv_parser.ConvParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Conv node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Conv node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.dropout_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-dropout-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.dropout_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.dropout_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.DropoutParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.</span></span><span class="sig-name descname"><span class="pre">DropoutParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/dropout_parser.html#DropoutParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.DropoutParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Dropout node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Dropout operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.DropoutParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/dropout_parser.html#DropoutParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.DropoutParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Dropout node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Dropout node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.flatten_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-flatten-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.flatten_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.flatten_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.FlattenParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.</span></span><span class="sig-name descname"><span class="pre">FlattenParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/flatten_parser.html#FlattenParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.FlattenParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Flatten node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Flatten operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.FlattenParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/flatten_parser.html#FlattenParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.FlattenParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Flatten node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the <cite>axis_attribute</cite> of the nodes is None or not equal 1 (limited to 1 at the moment).</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Flatten node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.gemm_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-gemm-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.gemm_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.gemm_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.GemmParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.</span></span><span class="sig-name descname"><span class="pre">GemmParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/gemm_parser.html#GemmParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.GemmParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Gemm node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Gemm operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.GemmParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/gemm_parser.html#GemmParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.GemmParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Gemm node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Gemm node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.identity_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-identity-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.identity_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.identity_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.identity_parser.IdentityParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.identity_parser.</span></span><span class="sig-name descname"><span class="pre">IdentityParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/identity_parser.html#IdentityParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.identity_parser.IdentityParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Identity node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Identity operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.identity_parser.IdentityParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/identity_parser.html#IdentityParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.identity_parser.IdentityParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Identity node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Identity node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.matmul_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-matmul-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.matmul_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.matmul_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.MatMulParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.</span></span><span class="sig-name descname"><span class="pre">MatMulParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/matmul_parser.html#MatMulParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.MatMulParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX MatMul node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+MatMul operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.MatMulParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/matmul_parser.html#MatMulParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.MatMulParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the MatMul node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the MatMul node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-maxpool-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.MaxPoolParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.</span></span><span class="sig-name descname"><span class="pre">MaxPoolParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/maxpool_parser.html#MaxPoolParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.MaxPoolParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX MaxPool node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+MaxPool operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.MaxPoolParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/maxpool_parser.html#MaxPoolParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.MaxPoolParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the MaxPool node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the MaxPool node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.parser_factory">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-parser-factory-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.parser_factory module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.parser_factory" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.parser_factory.</span></span><span class="sig-name descname"><span class="pre">ParserFactory</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/parser_factory.html#ParserFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Factory for creating parser instances based on node types.</p>
+<p>This factory maintains a registry that maps ONNX node types to corresponding parser classes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory.parsers">
+<span class="sig-name descname"><span class="pre">parsers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory.parsers" title="Link to this definition"></a></dt>
+<dd><p>A mapping of ONNX operators to their respective parser classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory.get_parser">
+<span class="sig-name descname"><span class="pre">get_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/parser_factory.html#ParserFactory.get_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory.get_parser" title="Link to this definition"></a></dt>
+<dd><p>Creates and returns a parser instance corresponding to the node type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>op_type</strong> (<em>string</em>) – The name of the ONNX node being parsed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the parser class associated with the node.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Parser</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – If the node’s type is not found in the registry.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.relu_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-relu-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.relu_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.relu_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.relu_parser.ReluParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.relu_parser.</span></span><span class="sig-name descname"><span class="pre">ReluParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/relu_parser.html#ReluParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.relu_parser.ReluParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX ReLu node.</p>
+<p>This parser extracts the necessary inputs and outputs, determines their
+shapes, and adds an entry to the parser’s node list representing the
+ReLu operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.relu_parser.ReluParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/relu_parser.html#ReluParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.relu_parser.ReluParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the ReLu node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the ReLu node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.reshape_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-reshape-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.reshape_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.reshape_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.ReshapeParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.</span></span><span class="sig-name descname"><span class="pre">ReshapeParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/reshape_parser.html#ReshapeParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.ReshapeParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Reshape node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Reshape operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.ReshapeParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/reshape_parser.html#ReshapeParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.ReshapeParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Reshape node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Reshape node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.shape_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-shape-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.shape_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.shape_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.shape_parser.ShapeParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.shape_parser.</span></span><span class="sig-name descname"><span class="pre">ShapeParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/shape_parser.html#ShapeParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.shape_parser.ShapeParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Shape node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Shape operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.shape_parser.ShapeParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/shape_parser.html#ShapeParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.shape_parser.ShapeParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Shape node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Shape node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.sub_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-sub-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.sub_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.sub_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.sub_parser.SubParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.sub_parser.</span></span><span class="sig-name descname"><span class="pre">SubParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/sub_parser.html#SubParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.sub_parser.SubParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Sub node.</p>
+<p>This parser extracts the necessary inputs and outputs, determines their
+shapes, and adds an entry to the parser’s node list representing the
+Sub operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.sub_parser.SubParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/sub_parser.html#SubParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.sub_parser.SubParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Sub node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Sub node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser">
+<span id="onnxgurobi-onnx-to-gurobi-parsers-unsqueeze-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.UnsqueezeParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.</span></span><span class="sig-name descname"><span class="pre">UnsqueezeParser</span></span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/unsqueeze_parser.html#UnsqueezeParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.UnsqueezeParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser" title="onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Parses the ONNX Unsqueeze node.</p>
+<p>This parser extracts the necessary inputs, outputs and attributes, determines their
+shapes and values, and adds an entry to the parser’s node list representing the
+Unsqueeze operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.UnsqueezeParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parsers/unsqueeze_parser.html#UnsqueezeParser.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.UnsqueezeParser.parse" title="Link to this definition"></a></dt>
+<dd><p>Parses the Unsqueeze node and updates the parser’s internal representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>dict</em>) – A dictionary describing the ONNX node. Expected to have the following keys:</p></li>
+<li><p><strong>&quot;name&quot;</strong></p></li>
+<li><p><strong>&quot;type&quot;</strong></p></li>
+<li><p><strong>&quot;input&quot;</strong></p></li>
+<li><p><strong>&quot;output&quot;</strong></p></li>
+<li><p><strong>&quot;attributes&quot;</strong></p></li>
+<li><p><strong>&quot;initializers&quot;</strong></p></li>
+<li><p><strong>&quot;constants&quot;.</strong> (<em>and</em>)</p></li>
+<li><p><strong>parser</strong> – The main parser module, which maintains information like
+current_shape, intermediate_tensors_shapes, and the node list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The method updates the parser in place.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Side Effects:</dt><dd><ul class="simple">
+<li><p>Updates <cite>parser.intermediate_tensors_shapes</cite> with the output of the node and its shape.</p></li>
+<li><p>Updates <cite>parser.current_shape</cite> with the shape of the output.</p></li>
+<li><p>Appends a new entry to <cite>parser.nodes</cite> describing the Unsqueeze node.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parsers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parsers" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="onnxgurobi.onnx_to_gurobi.operators.html" class="btn btn-neutral float-left" title="onnxgurobi.onnx_to_gurobi.operators package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Muhammad Atallah.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

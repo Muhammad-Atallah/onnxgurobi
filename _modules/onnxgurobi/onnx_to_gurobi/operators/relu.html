@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onnxgurobi.onnx_to_gurobi.operators.relu &mdash; ONNX-to-Gurobi Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            ONNX-to-Gurobi Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">onnxgurobi</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">ONNX-to-Gurobi Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">onnxgurobi.onnx_to_gurobi.operators.relu</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for onnxgurobi.onnx_to_gurobi.operators.relu</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseOperator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_node_to_string</span>
+
+<div class="viewcode-block" id="ReLUOperator">
+<a class="viewcode-back" href="../../../../onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ReLUOperator</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements the ReLU (Rectified Linear Unit) operator.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        input (str): The name of the input tensor.</span>
+<span class="sd">        output (str): The name of the output tensor.</span>
+<span class="sd">        input_shape (list): Shape of the input tensor.</span>
+<span class="sd">        output_shape (list): Shape of the output tensor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">initializers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the ReLUOperator with the given node and initializers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:</span>
+<span class="sd">            &quot;name&quot;, &quot;type&quot;, &quot;input&quot;, &quot;output&quot;, &quot;attributes&quot;, &quot;initializers&quot;, and &quot;constants&quot;.</span>
+<span class="sd">            initializers (dict): A dictionary of initial values for any constant tensors (weights, biases, etc.).</span>
+<span class="sd">            It&#39;s unused here, but included for consistency with the base operator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">initializers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;shape&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;shape&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="ReLUOperator.apply_constraints">
+<a class="viewcode-back" href="../../../../onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.apply_constraints">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gurobi_model</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Applies the Gurobi constraints to encode the ReLU operation.</span>
+
+<span class="sd">        This method encodes the piecewise linear ReLU function using teh following constraints:</span>
+<span class="sd">            - Output &gt;= Input</span>
+<span class="sd">            - Output &gt;= 0</span>
+<span class="sd">            - Output &lt;= upper_bound</span>
+<span class="sd">            - Output &lt;= Input + upper_bound * (1 - binary_var)</span>
+<span class="sd">            - Output &lt;= upper_bound * binary_var</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            gurobi_model (gurobipy.Model): The Gurobi model to which constraints should be added.</span>
+<span class="sd">            variables (dict): A dictionary mapping tensor names to Gurobi variables or constant values.</span>
+<span class="sd">              Expected to include a binary variable named &quot;relu_binary_&lt;output&gt;&quot; for this operator.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If input, output, or the required binary variable is missing from `variables`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">var_input</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">]</span>
+        <span class="n">var_output</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">]</span>
+        <span class="n">var_output_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span>
+        <span class="n">binary_var</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;relu_binary_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">upper_bound</span> <span class="o">=</span> <span class="mf">1e5</span>
+
+        <span class="k">if</span> <span class="n">var_input</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Variable for input &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">var_output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Variable for input &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">binary_var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Error in </span><span class="si">{</span><span class="n">_node_to_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2">:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;No binary variable found for ReLU activation&quot;</span>
+            <span class="p">)</span>
+        
+        <span class="n">gurobi_model</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="n">output_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">var_output_shape</span><span class="p">]))</span>
+
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">output_indices</span><span class="p">:</span>
+            <span class="n">constraint_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ReLU_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">gurobi_model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">var_output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">var_input</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">constraint_name</span><span class="si">}</span><span class="s2">_ge_x&quot;</span><span class="p">)</span>
+            <span class="n">gurobi_model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">var_output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">constraint_name</span><span class="si">}</span><span class="s2">_ge_0&quot;</span><span class="p">)</span>
+            <span class="n">gurobi_model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">var_output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">constraint_name</span><span class="si">}</span><span class="s2">_le_upper_bound&quot;</span><span class="p">)</span>
+            <span class="n">gurobi_model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">var_output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">var_input</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">upper_bound</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">binary_var</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">constraint_name</span><span class="si">}</span><span class="s2">_le_x_plus_upper_bound&quot;</span><span class="p">)</span>
+            <span class="n">gurobi_model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">var_output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">upper_bound</span> <span class="o">*</span> <span class="n">binary_var</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">constraint_name</span><span class="si">}</span><span class="s2">_le_upper_bound_binary&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Muhammad Atallah.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

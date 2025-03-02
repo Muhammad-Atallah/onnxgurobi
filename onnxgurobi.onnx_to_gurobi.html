@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onnxgurobi.onnx_to_gurobi package &mdash; ONNX-to-Gurobi Documentation 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="onnxgurobi.onnx_to_gurobi.operators package" href="onnxgurobi.onnx_to_gurobi.operators.html" />
+    <link rel="prev" title="onnxgurobi package" href="onnxgurobi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ONNX-to-Gurobi Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">onnxgurobi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="onnxgurobi.html">onnxgurobi package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="onnxgurobi.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">onnxgurobi.onnx_to_gurobi package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.html#module-onnxgurobi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ONNX-to-Gurobi Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">onnxgurobi</a></li>
+          <li class="breadcrumb-item"><a href="onnxgurobi.html">onnxgurobi package</a></li>
+      <li class="breadcrumb-item active">onnxgurobi.onnx_to_gurobi package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/onnxgurobi.onnx_to_gurobi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="onnxgurobi-onnx-to-gurobi-package">
+<h1>onnxgurobi.onnx_to_gurobi package<a class="headerlink" href="#onnxgurobi-onnx-to-gurobi-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html">onnxgurobi.onnx_to_gurobi.operators package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.add">onnxgurobi.onnx_to_gurobi.operators.add module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator"><code class="docutils literal notranslate"><span class="pre">AddOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.node"><code class="docutils literal notranslate"><span class="pre">AddOperator.node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input1"><code class="docutils literal notranslate"><span class="pre">AddOperator.input1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input2"><code class="docutils literal notranslate"><span class="pre">AddOperator.input2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.output"><code class="docutils literal notranslate"><span class="pre">AddOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input1_shape"><code class="docutils literal notranslate"><span class="pre">AddOperator.input1_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.input2_shape"><code class="docutils literal notranslate"><span class="pre">AddOperator.input2_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">AddOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.initializers"><code class="docutils literal notranslate"><span class="pre">AddOperator.initializers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.add.AddOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">AddOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.base_operator">onnxgurobi.onnx_to_gurobi.operators.base_operator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator"><code class="docutils literal notranslate"><span class="pre">BaseOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.base_operator.BaseOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">BaseOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.batch_normalization">onnxgurobi.onnx_to_gurobi.operators.batch_normalization module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization"><code class="docutils literal notranslate"><span class="pre">BatchNormalization</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.name"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.input"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.weights"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.weights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.bias"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.bias</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.mean"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.mean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.variance"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.variance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.output"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.shape_input_output"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.shape_input_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.initializers"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.initializers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.epsilon"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.epsilon</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.batch_normalization.BatchNormalization.apply_constraints"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.concat">onnxgurobi.onnx_to_gurobi.operators.concat module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator"><code class="docutils literal notranslate"><span class="pre">ConcatOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.inputs"><code class="docutils literal notranslate"><span class="pre">ConcatOperator.inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.output"><code class="docutils literal notranslate"><span class="pre">ConcatOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.inputs_shapes"><code class="docutils literal notranslate"><span class="pre">ConcatOperator.inputs_shapes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">ConcatOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.axis"><code class="docutils literal notranslate"><span class="pre">ConcatOperator.axis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.concat.ConcatOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">ConcatOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.conv">onnxgurobi.onnx_to_gurobi.operators.conv module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator"><code class="docutils literal notranslate"><span class="pre">ConvOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.input"><code class="docutils literal notranslate"><span class="pre">ConvOperator.input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.weights"><code class="docutils literal notranslate"><span class="pre">ConvOperator.weights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.bias"><code class="docutils literal notranslate"><span class="pre">ConvOperator.bias</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.output"><code class="docutils literal notranslate"><span class="pre">ConvOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.input_shape"><code class="docutils literal notranslate"><span class="pre">ConvOperator.input_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">ConvOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.pads"><code class="docutils literal notranslate"><span class="pre">ConvOperator.pads</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.strides"><code class="docutils literal notranslate"><span class="pre">ConvOperator.strides</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.dilations"><code class="docutils literal notranslate"><span class="pre">ConvOperator.dilations</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.group"><code class="docutils literal notranslate"><span class="pre">ConvOperator.group</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.initializers"><code class="docutils literal notranslate"><span class="pre">ConvOperator.initializers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.conv.ConvOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">ConvOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.dropout">onnxgurobi.onnx_to_gurobi.operators.dropout module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator"><code class="docutils literal notranslate"><span class="pre">DropoutOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.node"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.input"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.output"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.mask"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.mask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.input_shape"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.input_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.mask_shape"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.mask_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.ratio"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.ratio</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.training_mode"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.training_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.dropout.DropoutOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">DropoutOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.flatten">onnxgurobi.onnx_to_gurobi.operators.flatten module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator"><code class="docutils literal notranslate"><span class="pre">FlattenOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.input"><code class="docutils literal notranslate"><span class="pre">FlattenOperator.input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.output"><code class="docutils literal notranslate"><span class="pre">FlattenOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.input_shape"><code class="docutils literal notranslate"><span class="pre">FlattenOperator.input_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">FlattenOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.flatten.FlattenOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">FlattenOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.gemm">onnxgurobi.onnx_to_gurobi.operators.gemm module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator"><code class="docutils literal notranslate"><span class="pre">GemmOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.name"><code class="docutils literal notranslate"><span class="pre">GemmOperator.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input1"><code class="docutils literal notranslate"><span class="pre">GemmOperator.input1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input2"><code class="docutils literal notranslate"><span class="pre">GemmOperator.input2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input3"><code class="docutils literal notranslate"><span class="pre">GemmOperator.input3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.output"><code class="docutils literal notranslate"><span class="pre">GemmOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input1_shape"><code class="docutils literal notranslate"><span class="pre">GemmOperator.input1_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.input2_shape"><code class="docutils literal notranslate"><span class="pre">GemmOperator.input2_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">GemmOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.initializers"><code class="docutils literal notranslate"><span class="pre">GemmOperator.initializers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.gemm.GemmOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">GemmOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.matmul">onnxgurobi.onnx_to_gurobi.operators.matmul module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul"><code class="docutils literal notranslate"><span class="pre">MatMul</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input1"><code class="docutils literal notranslate"><span class="pre">MatMul.input1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input2"><code class="docutils literal notranslate"><span class="pre">MatMul.input2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.output"><code class="docutils literal notranslate"><span class="pre">MatMul.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input1_shape"><code class="docutils literal notranslate"><span class="pre">MatMul.input1_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.input2_shape"><code class="docutils literal notranslate"><span class="pre">MatMul.input2_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.output_shape"><code class="docutils literal notranslate"><span class="pre">MatMul.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.initializers"><code class="docutils literal notranslate"><span class="pre">MatMul.initializers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.constants"><code class="docutils literal notranslate"><span class="pre">MatMul.constants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.matmul.MatMul.apply_constraints"><code class="docutils literal notranslate"><span class="pre">MatMul.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.operator_factory">onnxgurobi.onnx_to_gurobi.operators.operator_factory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory"><code class="docutils literal notranslate"><span class="pre">OperatorFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory.node_handlers"><code class="docutils literal notranslate"><span class="pre">OperatorFactory.node_handlers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory.create_operator"><code class="docutils literal notranslate"><span class="pre">OperatorFactory.create_operator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.relu">onnxgurobi.onnx_to_gurobi.operators.relu module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator"><code class="docutils literal notranslate"><span class="pre">ReLUOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.input"><code class="docutils literal notranslate"><span class="pre">ReLUOperator.input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.output"><code class="docutils literal notranslate"><span class="pre">ReLUOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.input_shape"><code class="docutils literal notranslate"><span class="pre">ReLUOperator.input_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">ReLUOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.relu.ReLUOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">ReLUOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.reshape">onnxgurobi.onnx_to_gurobi.operators.reshape module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator"><code class="docutils literal notranslate"><span class="pre">ReshapeOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.input"><code class="docutils literal notranslate"><span class="pre">ReshapeOperator.input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.output"><code class="docutils literal notranslate"><span class="pre">ReshapeOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.input_shape"><code class="docutils literal notranslate"><span class="pre">ReshapeOperator.input_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">ReshapeOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.reshape.ReshapeOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">ReshapeOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators.sub">onnxgurobi.onnx_to_gurobi.operators.sub module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator"><code class="docutils literal notranslate"><span class="pre">SubOperator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input1"><code class="docutils literal notranslate"><span class="pre">SubOperator.input1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input2"><code class="docutils literal notranslate"><span class="pre">SubOperator.input2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.output"><code class="docutils literal notranslate"><span class="pre">SubOperator.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input1_shape"><code class="docutils literal notranslate"><span class="pre">SubOperator.input1_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.input2_shape"><code class="docutils literal notranslate"><span class="pre">SubOperator.input2_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.output_shape"><code class="docutils literal notranslate"><span class="pre">SubOperator.output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.initializers"><code class="docutils literal notranslate"><span class="pre">SubOperator.initializers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.sub.SubOperator.apply_constraints"><code class="docutils literal notranslate"><span class="pre">SubOperator.apply_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi-onnx-to-gurobi-operators-unsqueeze-module">onnxgurobi.onnx_to_gurobi.operators.unsqueeze module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#module-onnxgurobi.onnx_to_gurobi.operators">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html">onnxgurobi.onnx_to_gurobi.parsers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.add_parser">onnxgurobi.onnx_to_gurobi.parsers.add_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.add_parser.AddParser"><code class="docutils literal notranslate"><span class="pre">AddParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.add_parser.AddParser.parse"><code class="docutils literal notranslate"><span class="pre">AddParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser">onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.AveragePoolParser"><code class="docutils literal notranslate"><span class="pre">AveragePoolParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.averagepool_parser.AveragePoolParser.parse"><code class="docutils literal notranslate"><span class="pre">AveragePoolParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.base_parser">onnxgurobi.onnx_to_gurobi.parsers.base_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser"><code class="docutils literal notranslate"><span class="pre">BaseParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.base_parser.BaseParser.parse"><code class="docutils literal notranslate"><span class="pre">BaseParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser">onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.BatchNormalization"><code class="docutils literal notranslate"><span class="pre">BatchNormalization</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.batch_normalization_parser.BatchNormalization.parse"><code class="docutils literal notranslate"><span class="pre">BatchNormalization.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.concat_parser">onnxgurobi.onnx_to_gurobi.parsers.concat_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.concat_parser.ConcatParser"><code class="docutils literal notranslate"><span class="pre">ConcatParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.concat_parser.ConcatParser.parse"><code class="docutils literal notranslate"><span class="pre">ConcatParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.constant_parser">onnxgurobi.onnx_to_gurobi.parsers.constant_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.constant_parser.ConstantParser"><code class="docutils literal notranslate"><span class="pre">ConstantParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.constant_parser.ConstantParser.parse"><code class="docutils literal notranslate"><span class="pre">ConstantParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.conv_parser">onnxgurobi.onnx_to_gurobi.parsers.conv_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.conv_parser.ConvParser"><code class="docutils literal notranslate"><span class="pre">ConvParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.conv_parser.ConvParser.parse"><code class="docutils literal notranslate"><span class="pre">ConvParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.dropout_parser">onnxgurobi.onnx_to_gurobi.parsers.dropout_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.DropoutParser"><code class="docutils literal notranslate"><span class="pre">DropoutParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.dropout_parser.DropoutParser.parse"><code class="docutils literal notranslate"><span class="pre">DropoutParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.flatten_parser">onnxgurobi.onnx_to_gurobi.parsers.flatten_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.FlattenParser"><code class="docutils literal notranslate"><span class="pre">FlattenParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.flatten_parser.FlattenParser.parse"><code class="docutils literal notranslate"><span class="pre">FlattenParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.gemm_parser">onnxgurobi.onnx_to_gurobi.parsers.gemm_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.GemmParser"><code class="docutils literal notranslate"><span class="pre">GemmParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.gemm_parser.GemmParser.parse"><code class="docutils literal notranslate"><span class="pre">GemmParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.identity_parser">onnxgurobi.onnx_to_gurobi.parsers.identity_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.identity_parser.IdentityParser"><code class="docutils literal notranslate"><span class="pre">IdentityParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.identity_parser.IdentityParser.parse"><code class="docutils literal notranslate"><span class="pre">IdentityParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.matmul_parser">onnxgurobi.onnx_to_gurobi.parsers.matmul_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.MatMulParser"><code class="docutils literal notranslate"><span class="pre">MatMulParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.matmul_parser.MatMulParser.parse"><code class="docutils literal notranslate"><span class="pre">MatMulParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser">onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.MaxPoolParser"><code class="docutils literal notranslate"><span class="pre">MaxPoolParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.maxpool_parser.MaxPoolParser.parse"><code class="docutils literal notranslate"><span class="pre">MaxPoolParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.parser_factory">onnxgurobi.onnx_to_gurobi.parsers.parser_factory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory"><code class="docutils literal notranslate"><span class="pre">ParserFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory.parsers"><code class="docutils literal notranslate"><span class="pre">ParserFactory.parsers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory.get_parser"><code class="docutils literal notranslate"><span class="pre">ParserFactory.get_parser()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.relu_parser">onnxgurobi.onnx_to_gurobi.parsers.relu_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.relu_parser.ReluParser"><code class="docutils literal notranslate"><span class="pre">ReluParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.relu_parser.ReluParser.parse"><code class="docutils literal notranslate"><span class="pre">ReluParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.reshape_parser">onnxgurobi.onnx_to_gurobi.parsers.reshape_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.ReshapeParser"><code class="docutils literal notranslate"><span class="pre">ReshapeParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.reshape_parser.ReshapeParser.parse"><code class="docutils literal notranslate"><span class="pre">ReshapeParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.shape_parser">onnxgurobi.onnx_to_gurobi.parsers.shape_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.shape_parser.ShapeParser"><code class="docutils literal notranslate"><span class="pre">ShapeParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.shape_parser.ShapeParser.parse"><code class="docutils literal notranslate"><span class="pre">ShapeParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.sub_parser">onnxgurobi.onnx_to_gurobi.parsers.sub_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.sub_parser.SubParser"><code class="docutils literal notranslate"><span class="pre">SubParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.sub_parser.SubParser.parse"><code class="docutils literal notranslate"><span class="pre">SubParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser">onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.UnsqueezeParser"><code class="docutils literal notranslate"><span class="pre">UnsqueezeParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.unsqueeze_parser.UnsqueezeParser.parse"><code class="docutils literal notranslate"><span class="pre">UnsqueezeParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#module-onnxgurobi.onnx_to_gurobi.parsers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.internalOnnx">
+<span id="onnxgurobi-onnx-to-gurobi-internalonnx-module"></span><h2>onnxgurobi.onnx_to_gurobi.internalOnnx module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.internalOnnx" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.internalOnnx.</span></span><span class="sig-name descname"><span class="pre">InternalONNXRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/internalOnnx.html#InternalONNXRepresentation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents the internal ONNX model after parsing.
+This representation supplies the ONNXToGurobi
+with the required attributes for building the Gurobi model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation.initializers" title="Link to this definition"></a></dt>
+<dd><p>Contains the initial values from the parsed ONNX model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation.nodes" title="Link to this definition"></a></dt>
+<dd><p>A list of dictionaries, each representing an ONNX node extracted by the parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation.in_out_tensors_shapes">
+<span class="sig-name descname"><span class="pre">in_out_tensors_shapes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.internalOnnx.InternalONNXRepresentation.in_out_tensors_shapes" title="Link to this definition"></a></dt>
+<dd><p>Stores shapes for all input and output tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.onnxToGurobi">
+<span id="onnxgurobi-onnx-to-gurobi-onnxtogurobi-module"></span><h2>onnxgurobi.onnx_to_gurobi.onnxToGurobi module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.onnxToGurobi" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.onnxToGurobi.</span></span><span class="sig-name descname"><span class="pre">ONNXToGurobi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">onnx_model_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/onnxToGurobi.html#ONNXToGurobi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Converts an ONNX model to a Gurobi optimization model by transforming the ONNX
+representation into an internal representation and then constructing the corresponding
+constraints for each operator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.model" title="Link to this definition"></a></dt>
+<dd><p>The Gurobi model being constructed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gurobipy.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.internal_onnx">
+<span class="sig-name descname"><span class="pre">internal_onnx</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.internal_onnx" title="Link to this definition"></a></dt>
+<dd><p>The internal representation of the parsed ONNX model,
+containing initializers, nodes, and input/output tensor shapes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>InternalONNX</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.initializers" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing the initial values extracted from the ONNX model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.nodes" title="Link to this definition"></a></dt>
+<dd><p>A list of dictionaries, each representing an ONNX node with its associated data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.in_out_tensors_shapes">
+<span class="sig-name descname"><span class="pre">in_out_tensors_shapes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.in_out_tensors_shapes" title="Link to this definition"></a></dt>
+<dd><p>A mapping of input and output tensor names to their shapes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.operator_factory">
+<span class="sig-name descname"><span class="pre">operator_factory</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.operator_factory" title="Link to this definition"></a></dt>
+<dd><p>Factory for creating operator instances based on node types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory" title="onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory">OperatorFactory</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.variables">
+<span class="sig-name descname"><span class="pre">variables</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.variables" title="Link to this definition"></a></dt>
+<dd><p>A mapping of tensor names to either Gurobi decision variables or constant values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.build_model">
+<span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/onnxToGurobi.html#ONNXToGurobi.build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.build_model" title="Link to this definition"></a></dt>
+<dd><p>Constructs the Gurobi model by creating variables and applying operator constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.create_variables">
+<span class="sig-name descname"><span class="pre">create_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/onnxToGurobi.html#ONNXToGurobi.create_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.create_variables" title="Link to this definition"></a></dt>
+<dd><p>Creates Gurobi variables for the input/output tensors and intermediate nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.get_gurobi_model">
+<span class="sig-name descname"><span class="pre">get_gurobi_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/onnxToGurobi.html#ONNXToGurobi.get_gurobi_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.onnxToGurobi.ONNXToGurobi.get_gurobi_model" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the Gurobi model after all constraints have been added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The constructed Gurobi model reflecting the ONNX graph.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>gurobipy.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.parser">
+<span id="onnxgurobi-onnx-to-gurobi-parser-module"></span><h2>onnxgurobi.onnx_to_gurobi.parser module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">onnxgurobi.onnx_to_gurobi.parser.</span></span><span class="sig-name descname"><span class="pre">ONNXParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">onnx_model_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/onnxgurobi/onnx_to_gurobi/parser.html#ONNXParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Parses an ONNX model, extracting initializers, shapes for inputs and outputs,
+and creating an internal representation of nodes for processing.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.onnx_model">
+<span class="sig-name descname"><span class="pre">onnx_model</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.onnx_model" title="Link to this definition"></a></dt>
+<dd><p>The loaded ONNX model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>onnx.ModelProto</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.graph">
+<span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.graph" title="Link to this definition"></a></dt>
+<dd><p>The main graph of the ONNX model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>onnx.GraphProto</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.initializer_shapes">
+<span class="sig-name descname"><span class="pre">initializer_shapes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.initializer_shapes" title="Link to this definition"></a></dt>
+<dd><p>Maps each initializer name to its shape (list of ints).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.initializer_values">
+<span class="sig-name descname"><span class="pre">initializer_values</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.initializer_values" title="Link to this definition"></a></dt>
+<dd><p>Maps each initializer name to its actual values (NumPy array).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.input_output_tensors_shapes">
+<span class="sig-name descname"><span class="pre">input_output_tensors_shapes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.input_output_tensors_shapes" title="Link to this definition"></a></dt>
+<dd><p>Stores shapes for all input and output tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.intermediate_tensors_shapes">
+<span class="sig-name descname"><span class="pre">intermediate_tensors_shapes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.intermediate_tensors_shapes" title="Link to this definition"></a></dt>
+<dd><p>Tracks shapes for intermediate nodes generated by the parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.constant_values">
+<span class="sig-name descname"><span class="pre">constant_values</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.constant_values" title="Link to this definition"></a></dt>
+<dd><p>Stores constant values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.nodes" title="Link to this definition"></a></dt>
+<dd><p>The internal representation of nodes, each a dict describing
+inputs, outputs, attributes, and references to initializers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.current_shape">
+<span class="sig-name descname"><span class="pre">current_shape</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.current_shape" title="Link to this definition"></a></dt>
+<dd><p>Keeps track of the shape of the most recent node’s output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="onnxgurobi.onnx_to_gurobi.parser.ONNXParser.node_parser_factory">
+<span class="sig-name descname"><span class="pre">node_parser_factory</span></span><a class="headerlink" href="#onnxgurobi.onnx_to_gurobi.parser.ONNXParser.node_parser_factory" title="Link to this definition"></a></dt>
+<dd><p>Responsible for providing parser classes for each node type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="onnxgurobi.onnx_to_gurobi.parsers.html#onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory" title="onnxgurobi.onnx_to_gurobi.parsers.parser_factory.ParserFactory">ParserFactory</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi.utils">
+<span id="onnxgurobi-onnx-to-gurobi-utils-module"></span><h2>onnxgurobi.onnx_to_gurobi.utils module<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi.utils" title="Link to this heading"></a></h2>
+</section>
+<section id="module-onnxgurobi.onnx_to_gurobi">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-onnxgurobi.onnx_to_gurobi" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="onnxgurobi.html" class="btn btn-neutral float-left" title="onnxgurobi package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="onnxgurobi.onnx_to_gurobi.operators.html" class="btn btn-neutral float-right" title="onnxgurobi.onnx_to_gurobi.operators package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Muhammad Atallah.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
