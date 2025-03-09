@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torchvision import transforms, datasets
 import matplotlib.pyplot as plt
 import torch.onnx
 import gurobipy as gp
@@ -133,26 +132,46 @@ import torch.onnx
 # model = Net()
 
 
+# class Net(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         self.weight = nn.Parameter(torch.randn(100, 28*28))
+#         self.bias = nn.Parameter(torch.randn(100))
+    
+#     def forward(self, x):
+#         # Suppose you want to set alpha=2 and beta=0.5
+#         alpha = 2.0
+#         beta = 0.5
+#         # x here should be of shape (batch_size, 28*28)
+#         x = torch.addmm(self.bias * beta, x, self.weight.t(), beta=beta, alpha=alpha)
+#         x = x + 0.1  # The additional bias can also be thought of as a further addition.
+#         return x
+
 class Net(nn.Module):
     def __init__(self):
-        super().__init__()
-        self.weight = nn.Parameter(torch.randn(100, 28*28))
-        self.bias = nn.Parameter(torch.randn(100))
-    
-    def forward(self, x):
-        # Suppose you want to set alpha=2 and beta=0.5
-        alpha = 2.0
-        beta = 0.5
-        # x here should be of shape (batch_size, 28*28)
-        x = torch.addmm(self.bias * beta, x, self.weight.t(), beta=beta, alpha=alpha)
-        x = x + 0.1  # The additional bias can also be thought of as a further addition.
-        return x
+        super(Net, self).__init__()
+        # Reduce channels: 1 -> 4 instead of 1->8
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=4, kernel_size=3, padding=1)
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        # Second conv: 4 -> 8 channels instead of 8 -> 16
+        self.conv2 = nn.Conv2d(in_channels=4, out_channels=8, kernel_size=3, padding=1)
+        # Flatten layer to reshape tensor from (batch_size, 8, 5, 5) to (batch_size, 8*5*5)
+        self.flatten = nn.Flatten()
+        # Fully connected layer with reduced input dimension: 8 * 5 * 5 = 200
+        self.fc1 = nn.Linear(8 * 5 * 5, 10)
 
+    def forward(self, x):
+        x = F.relu(self.conv1(x))   # Conv1 followed by ReLU -> shape: (batch_size, 4, 10, 10)
+        x = self.pool(x)            # Max pooling -> shape: (batch_size, 4, 5, 5)
+        x = F.relu(self.conv2(x))   # Conv2 followed by ReLU -> shape: (batch_size, 8, 5, 5)
+        x = self.flatten(x)         # Flatten -> shape: (batch_size, 200)
+        x = self.fc1(x)             # Fully connected layer -> shape: (batch_size, 10)
+        return x
 
 model = Net()
 
-dummy_input = torch.randn(1, 28 * 28)  # Batch size of 1
-onnx_file_path = "simple_add.onnx"  # Desired output file name
+dummy_input = torch.randn(1, 1, 10, 10)  # Batch size of 1
+onnx_file_path = "simple_conv.onnx"  # Desired output file name
 torch.onnx.export(model,               # Model being exported
                   dummy_input,       # Model input (or a tuple for multiple inputs)
                   onnx_file_path,    # Where to save the model

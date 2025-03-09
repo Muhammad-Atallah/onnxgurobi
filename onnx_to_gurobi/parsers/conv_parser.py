@@ -65,12 +65,10 @@ class ConvParser(BaseParser):
         parser.intermediate_tensors_shapes[node.output[0]] = output_shape.copy()
         parser.current_shape = output_shape.copy()
 
-        attributes = [
-            {"name": "pads", "value": pads},
-            {"name": "strides", "value": strides},
-            {"name": "dilations", "value": dilations},
-            {"name": "group", "value": group}
-        ]
+        attributes = {"pads": pads,
+                      "strides" : strides,
+                      "dilations": dilations,
+                      "group": group}
 
         parser.nodes.append({
             'name': node.name,

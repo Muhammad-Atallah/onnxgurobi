@@ -1,8 +1,8 @@
 from gurobipy import GRB
 from gurobipy import quicksum
 from itertools import product
-from .base_operator import BaseOperator
-from ..utils import _node_to_string
+from base_operator import BaseOperator
+from utils import _node_to_string
 
 class MaxPoolOperator(BaseOperator):
     def __init__(self, node, initializers):
@@ -44,6 +44,8 @@ class MaxPoolOperator(BaseOperator):
                 for w in range(width_out):
                     h_start = h * stride_h - pad_top
                     w_start = w * stride_w - pad_left
+                    h_end = h_start + (kernel_height - 1) * dilation_h + 1
+                    w_end = w_start + (kernel_width - 1) * dilation_w + 1
 
                     pooling_elements = []
 
@@ -55,7 +57,7 @@ class MaxPoolOperator(BaseOperator):
                             if 0 <= h_in < height_in and 0 <= w_in < width_in:
                                 pooling_elements.append(var_input[c, h_in, w_in])
 
-                   # var_output <= each pooling element
+                    # var_output <= each pooling element
                     for idx, elem in enumerate(pooling_elements):
                         gurobi_model.addConstr(
                             var_output[c, h, w] >= elem,

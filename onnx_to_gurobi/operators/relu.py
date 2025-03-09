@@ -70,7 +70,7 @@ class ReLUOperator(BaseOperator):
                 f"Error in {_node_to_string(self.node)}:"
                 f"No binary variable found for ReLU activation"
             )
-        
+
         gurobi_model.update()
 
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
@@ -78,8 +78,17 @@ class ReLUOperator(BaseOperator):
         for idx in output_indices:
             constraint_name = f"ReLU_{self.output}_{'_'.join(map(str, idx))}"
 
+            # Y >= X
             gurobi_model.addConstr(var_output[idx] >= var_input[idx], name=f"{constraint_name}_ge_x")
+
+            # Y >= 0
             gurobi_model.addConstr(var_output[idx] >= 0, name=f"{constraint_name}_ge_0")
+
+            #Y <= upper bound
             gurobi_model.addConstr(var_output[idx] <= upper_bound, name=f"{constraint_name}_le_upper_bound")
+
+            #Y <= X + upper bound * (1 − binary variable)
             gurobi_model.addConstr(var_output[idx] <= var_input[idx] + upper_bound * (1 - binary_var[idx]), name=f"{constraint_name}_le_x_plus_upper_bound")
+
+            # Y <= upper bound * binary variable
             gurobi_model.addConstr(var_output[idx] <= upper_bound * binary_var[idx], name=f"{constraint_name}_le_upper_bound_binary")

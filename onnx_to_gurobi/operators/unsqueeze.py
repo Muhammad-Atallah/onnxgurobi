@@ -68,15 +68,25 @@ class UnsqueezeOperator(BaseOperator):
                 f"Error in {_node_to_string(self.node)}:"
                 f"Variable for output '{self.output}' not found."
             )
+
         sorted_axes = sorted(self.axes)
+
+        # Generate all indices for the output tensor
         output_indices = list(product(*[range(dim) for dim in self.output_shape]))
+
         for out_idx in output_indices:
+
             input_idx = list(out_idx)
+
             for axis in sorted_axes:
+
                 if axis < 0:
                     axis += len(self.output_shape)
+
                 input_idx.pop(axis)
+
             input_idx = tuple(input_idx)
+
             gurobi_model.addConstr(
                 var_output[out_idx] == var_input[input_idx],
                 name=f"Unsqueeze_{self.output}_{'_'.join(map(str, out_idx))}_eq_{'_'.join(map(str, input_idx))}"

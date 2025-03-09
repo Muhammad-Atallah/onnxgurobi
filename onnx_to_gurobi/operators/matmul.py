@@ -95,6 +95,7 @@ class MatMul(BaseOperator):
 
         sum_dim = var_input_shape[-1]
 
+        # Generate all multi-dimensional indices for the input tensor
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
 
         for idx in output_indices:

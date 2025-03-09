@@ -7,6 +7,8 @@ from .concat import ConcatOperator
 from .reshape import ReshapeOperator
 from .flatten import FlattenOperator
 from .conv import ConvOperator
+from .maxpool import MaxPoolOperator
+from .averagepool import AveragePoolOperator
 
 class OperatorFactory:
     """
@@ -25,15 +27,17 @@ class OperatorFactory:
 
         """
         self.node_handlers = {
-            'Gemm':       GemmOperator,
-            'Add':        AddOperator,
-            'MatMul':     MatMul,
-            'Relu':       ReLUOperator,
-            'Sub':        SubOperator,
-            'Concat':     ConcatOperator,
-            'Reshape':    ReshapeOperator,
-            'Flatten':    FlattenOperator,
-            'Conv':       ConvOperator,
+            'Gemm': GemmOperator,
+            'Add': AddOperator,
+            'MatMul': MatMul,
+            'Relu': ReLUOperator,
+            'Sub': SubOperator,
+            'Concat': ConcatOperator,
+            'Reshape': ReshapeOperator,
+            'Flatten': FlattenOperator,
+            'Conv': ConvOperator,
+            'MaxPool': MaxPoolOperator,
+            'AveragePool': AveragePoolOperator
         }
 
     def create_operator(self, node, initializers):

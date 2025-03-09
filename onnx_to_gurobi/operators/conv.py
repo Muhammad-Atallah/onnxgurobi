@@ -83,7 +83,6 @@ class ConvOperator(BaseOperator):
                 )
 
         gurobi_model.update()
-        batch_size = 1  # Not used explicitly in the constraints
         channels, height_in, width_in = self.input_shape
         feature_maps, C_group, kernel_height, kernel_width = weights.shape
         height_out, width_out = self.output_shape[1], self.output_shape[2]
