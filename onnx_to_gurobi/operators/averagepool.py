@@ -7,7 +7,33 @@ from ..utils import _node_to_string
 
 
 class AveragePoolOperator(BaseOperator):
+    """
+    Implements the 2D average pool operator.
+
+    Attributes:
+        input (str): The name of the input tensor.
+        output (str): The name of the output tensor.
+        input_shape (list): The shape of the input tensor.
+        output_shape (list): The shape of the output tensor.
+        pads (list): Padding applied [top, left, bottom, right].
+        strides (list): The horizontal and vertical strides.
+        dilations (list): The horizontal and vertical dilation factors.
+        ceil_mode (int): The value indicating whether to use ceil or floor (default) to compute the output shape.
+        count_include_pad (int):The value indicating whether to include pad pixels when calculating values for the edges.
+
+    """
+
     def __init__(self, node, initializers):
+        """
+        Initializes the average pool operator with node and initializer information.
+
+
+        Args:
+            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:
+            "name", "type", "input", "output", "attributes", "initializers", and "constants".
+            initializers (dict): A dictionary of initial values for any constant tensors (weights, biases, etc.).
+
+        """
         super().__init__(node, initializers)
         self.input = node["input"][0]["name"]
         self.output = node["output"][0]["name"]
@@ -22,6 +48,21 @@ class AveragePoolOperator(BaseOperator):
         self.count_include_pad = node["attributes"].get('count_include_pad', 0)
 
     def apply_constraints(self, gurobi_model, variables):
+        """
+        Applies the Gurobi constraints to encode the average pool operation.
+
+        Iterates over each element in the output tensor, computing the average
+        from the corresponding part of the input tensor.
+        This part is determined by stride, dilation, and padding attributes.
+
+        Args:
+            gurobi_model (gurobipy.Model): The Gurobi model to which constraints should be added.
+            variables (dict): A dictionary mapping tensor names to either Gurobi variables or constant values.
+
+
+        Raises:
+            ValueError: If the input or output variables are not found.
+        """
         var_input = variables.get(self.input)
         var_output = variables.get(self.output)
 
