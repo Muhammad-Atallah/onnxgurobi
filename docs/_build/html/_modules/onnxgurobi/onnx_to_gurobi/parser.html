@@ -99,7 +99,7 @@
 <span class="sd">        Initializes the ONNXParser by loading the model and preparing data structures.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            onnx_model_path (str): Path to the ONNX file to be parsed.</span>
+<span class="sd">            onnx_model_path (str): Path to the ONNX file to be parsed</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">onnx_model</span> <span class="o">=</span> <span class="n">onnx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">onnx_model_path</span><span class="p">)</span>
@@ -124,7 +124,7 @@
 <span class="sd">        the parser&#39;s `parse` method to update the `nodes` dictionary.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            ValueError: If the ONNX model does not define any input tensors.</span>
+<span class="sd">            ValueError: If the ONNX model does not define any input tensors</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">initializer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">initializer</span><span class="p">:</span>
             <span class="n">initializer_array</span> <span class="o">=</span> <span class="n">onnx</span><span class="o">.</span><span class="n">numpy_helper</span><span class="o">.</span><span class="n">to_array</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>

@@ -140,12 +140,10 @@
         <span class="n">parser</span><span class="o">.</span><span class="n">intermediate_tensors_shapes</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">output_shape</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">current_shape</span> <span class="o">=</span> <span class="n">output_shape</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-        <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pads&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">pads</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;strides&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">strides</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dilations&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">dilations</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">group</span><span class="p">}</span>
-        <span class="p">]</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pads&quot;</span><span class="p">:</span> <span class="n">pads</span><span class="p">,</span>
+                      <span class="s2">&quot;strides&quot;</span> <span class="p">:</span> <span class="n">strides</span><span class="p">,</span>
+                      <span class="s2">&quot;dilations&quot;</span><span class="p">:</span> <span class="n">dilations</span><span class="p">,</span>
+                      <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">group</span><span class="p">}</span>
 
         <span class="n">parser</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
             <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>

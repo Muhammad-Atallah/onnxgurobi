@@ -138,13 +138,14 @@
         <span class="n">inputs</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="n">shape_tensor_input</span><span class="p">}]</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="n">shape_tensor_output</span><span class="p">}]</span>
 
-        <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;kernel_shape&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">kernel_shape</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;strides&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">strides</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pads&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">pads</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ceil_mode&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">ceil_mode</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dilations&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">dilations</span><span class="p">}</span>
-        <span class="p">]</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;kernel_shape&quot;</span><span class="p">:</span> <span class="n">kernel_shape</span><span class="p">,</span>
+            <span class="s2">&quot;strides&quot;</span><span class="p">:</span> <span class="n">strides</span><span class="p">,</span>
+            <span class="s2">&quot;pads&quot;</span><span class="p">:</span> <span class="n">pads</span><span class="p">,</span>
+            <span class="s2">&quot;ceil_mode&quot;</span><span class="p">:</span> <span class="n">ceil_mode</span><span class="p">,</span>
+            <span class="s2">&quot;dilations&quot;</span><span class="p">:</span> <span class="n">dilations</span><span class="p">,</span>
+            <span class="p">}</span>
+
 
         <span class="n">parser</span><span class="o">.</span><span class="n">intermediate_tensors_shapes</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">shape_tensor_output</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">current_shape</span> <span class="o">=</span> <span class="n">shape_tensor_output</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>

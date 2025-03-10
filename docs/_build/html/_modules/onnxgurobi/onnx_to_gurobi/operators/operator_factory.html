@@ -78,6 +78,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.reshape</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReshapeOperator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.flatten</span><span class="w"> </span><span class="kn">import</span> <span class="n">FlattenOperator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.conv</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConvOperator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.maxpool</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxPoolOperator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.averagepool</span><span class="w"> </span><span class="kn">import</span> <span class="n">AveragePoolOperator</span>
 
 <div class="viewcode-block" id="OperatorFactory">
 <a class="viewcode-back" href="../../../../onnxgurobi.onnx_to_gurobi.operators.html#onnxgurobi.onnx_to_gurobi.operators.operator_factory.OperatorFactory">[docs]</a>
@@ -98,15 +100,17 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">node_handlers</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;Gemm&#39;</span><span class="p">:</span>       <span class="n">GemmOperator</span><span class="p">,</span>
-            <span class="s1">&#39;Add&#39;</span><span class="p">:</span>        <span class="n">AddOperator</span><span class="p">,</span>
-            <span class="s1">&#39;MatMul&#39;</span><span class="p">:</span>     <span class="n">MatMul</span><span class="p">,</span>
-            <span class="s1">&#39;Relu&#39;</span><span class="p">:</span>       <span class="n">ReLUOperator</span><span class="p">,</span>
-            <span class="s1">&#39;Sub&#39;</span><span class="p">:</span>        <span class="n">SubOperator</span><span class="p">,</span>
-            <span class="s1">&#39;Concat&#39;</span><span class="p">:</span>     <span class="n">ConcatOperator</span><span class="p">,</span>
-            <span class="s1">&#39;Reshape&#39;</span><span class="p">:</span>    <span class="n">ReshapeOperator</span><span class="p">,</span>
-            <span class="s1">&#39;Flatten&#39;</span><span class="p">:</span>    <span class="n">FlattenOperator</span><span class="p">,</span>
-            <span class="s1">&#39;Conv&#39;</span><span class="p">:</span>       <span class="n">ConvOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Gemm&#39;</span><span class="p">:</span> <span class="n">GemmOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Add&#39;</span><span class="p">:</span> <span class="n">AddOperator</span><span class="p">,</span>
+            <span class="s1">&#39;MatMul&#39;</span><span class="p">:</span> <span class="n">MatMul</span><span class="p">,</span>
+            <span class="s1">&#39;Relu&#39;</span><span class="p">:</span> <span class="n">ReLUOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Sub&#39;</span><span class="p">:</span> <span class="n">SubOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Concat&#39;</span><span class="p">:</span> <span class="n">ConcatOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Reshape&#39;</span><span class="p">:</span> <span class="n">ReshapeOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Flatten&#39;</span><span class="p">:</span> <span class="n">FlattenOperator</span><span class="p">,</span>
+            <span class="s1">&#39;Conv&#39;</span><span class="p">:</span> <span class="n">ConvOperator</span><span class="p">,</span>
+            <span class="s1">&#39;MaxPool&#39;</span><span class="p">:</span> <span class="n">MaxPoolOperator</span><span class="p">,</span>
+            <span class="s1">&#39;AveragePool&#39;</span><span class="p">:</span> <span class="n">AveragePoolOperator</span>
         <span class="p">}</span>
 
 <div class="viewcode-block" id="OperatorFactory.create_operator">
