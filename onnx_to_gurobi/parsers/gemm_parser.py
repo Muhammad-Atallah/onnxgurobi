@@ -40,7 +40,7 @@ class GemmParser(BaseParser):
             {'name': node.input[2], 'shape': shape_bias}
         ]
         outputs = [{'name': node.output[0], 'shape': shape_output}]
-        attributes = []
+        attributes = {}
         for attribute in node.attribute:
             if attribute.type == onnx.AttributeProto.FLOAT:
                 value = attribute.f
@@ -48,7 +48,7 @@ class GemmParser(BaseParser):
                 value = attribute.i
             else:
                 value = None
-            attributes.append({'name': attribute.name, 'value': value})
+            attributes[attribute.name] = value
 
         parser.intermediate_tensors_shapes[node.output[0]] = shape_output
         parser.nodes.append({

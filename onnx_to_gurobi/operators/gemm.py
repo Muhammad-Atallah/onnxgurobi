@@ -63,12 +63,17 @@ class GemmOperator(BaseOperator):
         """
         weights = self.initializers.get(self.input2)
         bias = self.initializers.get(self.input3, np.zeros(weights.shape[1]))
-        alpha =  self.attributes[0]['value']
-        beta =  self.attributes[0]['value']
         var_input = variables[self.input1]
         var_output = variables[self.output]
         var_input_shape = self.input1_shape
         var_output_shape = self.output_shape
+        alpha = 1.0
+        beta = 1.0
+        for attr in self.attributes:
+            if attr['name'] == 'alpha':
+                alpha = attr['value']
+            elif attr['name'] == 'beta':
+                beta = attr['value']
 
         if var_input is None:
             raise ValueError(
@@ -115,10 +120,10 @@ class GemmOperator(BaseOperator):
                     f"Index {idx[-1]} is out of bounds for axis 1 with shape {weights.shape[1]} "
                 )
 
-            expression = quicksum(
+            expression = alpha * quicksum(
                 var_input[batch_indices + (k,)] * float(weights[batch_indices + (k, idx[-1])])
                 for k in range(sum_dim)
-            ) + float(bias[idx])
+            ) + beta * float(bias[idx])
 
             gurobi_model.addConstr(
                 var_output[output_idx] == expression,
