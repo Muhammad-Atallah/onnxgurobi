@@ -4,7 +4,32 @@ from base_parser import BaseParser
 from utils import _get_data_type
 
 class ConstantParser(BaseParser):
+    """
+    Parses the ONNX ReLu node.
+
+    This parser extracts the necessary inputs and outputs, determines their
+    shapes, and adds an entry to the parser's node list representing the
+    Constant operation.
+
+    """
     def parse(self, node, parser):
+        """
+        Parses the Constant node and updates the parser's internal representation.
+
+        Args:
+            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:
+            "name", "type", "input", "output", "attributes", "initializers", and "constants".
+            parser: The main parser module, which maintains information like
+                current_shape, intermediate_tensors_shapes, and the node list.
+
+        Returns:
+            None: The method updates the parser in place.
+
+        Side Effects:
+            - Updates `parser.intermediate_tensors_shapes` with the output of the node and its shape.
+            - Updates `parser.constant_values` with the value of the output.
+            - Appends a new entry to `parser.nodes` describing the Constant node.
+        """
         outputs = []
         attributes = []
         scalar_data_type = node.attribute[0].t.data_type  # Data type as integer code

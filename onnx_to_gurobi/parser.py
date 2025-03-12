@@ -62,14 +62,10 @@ class ONNXParser:
             if input.name in self.initializer_shapes:
                 continue
             shape = [dim.dim_value for dim in input.type.tensor_type.shape.dim[1:]]
-            if len(shape) == 1:
-                shape = [shape[0]]
             self.input_output_tensors_shapes[input.name] = shape
 
         for output in self.graph.output:
             shape = [dim.dim_value for dim in output.type.tensor_type.shape.dim[1:]]
-            if len(shape) == 1:
-                shape = [shape[0]]
             self.input_output_tensors_shapes[output.name] = shape
 
         if not self.graph.input:

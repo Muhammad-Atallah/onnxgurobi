@@ -1,14 +1,45 @@
 from base_parser import BaseParser
-
+from utils import _node_to_string
 class FlattenParser(BaseParser):
+    """
+    Parses the ONNX Flatten node.
+
+    This parser extracts the necessary inputs, outputs and attributes, determines their
+    shapes and values, and adds an entry to the parser's node list representing the
+    Flatten operation.
+
+    """
     def parse(self, node, parser):
+        """
+        Parses the Flatten node and updates the parser's internal representation.
+
+        Args:
+            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:
+            "name", "type", "input", "output", "attributes", "initializers", and "constants".
+            parser: The main parser module, which maintains information like
+                current_shape, intermediate_tensors_shapes, and the node list.
+
+        Returns:
+            None: The method updates the parser in place.
+
+        Raises:
+            ValueError: If the `axis_attribute` of the nodes is None or not equal 1 (limited to 1 at the moment).
+
+        Side Effects:
+            - Updates `parser.intermediate_tensors_shapes` with the output of the node and its shape.
+            - Updates `parser.current_shape` with the shape of the output.
+            - Appends a new entry to `parser.nodes` describing the Flatten node.
+        """
         axis_attribute = None
         for attribute in node.attribute:
             if attribute.name == 'axis':
                 axis_attribute = attribute.i
                 break
         if axis_attribute is None or axis_attribute != 1:
-            raise ValueError(f"Unsupported axis in Flatten node '{node.name}'.")
+            raise ValueError(
+                f"Error in {_node_to_string(self.node)}:"
+                f"Unsupported axis in Flatten node '{node.name}'."
+                )
         current_shape = parser.current_shape.copy()
         flattened_dim = 1
         for dim in current_shape:

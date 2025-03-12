@@ -3,6 +3,7 @@ from gurobipy import quicksum
 from itertools import product
 from .base_operator import BaseOperator
 from ..utils import _node_to_string
+
 class GemmOperator(BaseOperator):
     """
     Implements the Gemm operator (General Matrix Multiplication).
@@ -67,13 +68,8 @@ class GemmOperator(BaseOperator):
         var_output = variables[self.output]
         var_input_shape = self.input1_shape
         var_output_shape = self.output_shape
-        alpha = 1.0
-        beta = 1.0
-        for attr in self.attributes:
-            if attr['name'] == 'alpha':
-                alpha = attr['value']
-            elif attr['name'] == 'beta':
-                beta = attr['value']
+        alpha = self.attributes.get('alpha', 1.0)
+        beta = self.attributes.get('beta', 1.0)
 
         if var_input is None:
             raise ValueError(
@@ -108,11 +104,6 @@ class GemmOperator(BaseOperator):
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
 
         for idx in output_indices:
-            if len(idx) > 1:
-                batch_indices = idx[:-1]
-            else:
-                batch_indices = ()
-            output_idx = idx
 
             if idx[-1] >= weights.shape[1]:
                 raise IndexError(
@@ -121,11 +112,11 @@ class GemmOperator(BaseOperator):
                 )
 
             expression = alpha * quicksum(
-                var_input[batch_indices + (k,)] * float(weights[batch_indices + (k, idx[-1])])
+                var_input[(k,)] * float(weights[(k, idx[-1])])
                 for k in range(sum_dim)
             ) + beta * float(bias[idx])
 
             gurobi_model.addConstr(
-                var_output[output_idx] == expression,
+                var_output[idx] == expression,
                 name=f"Gemm_{self.output}_{'_'.join(map(str, idx))}"
             )

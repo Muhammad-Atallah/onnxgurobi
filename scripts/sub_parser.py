@@ -1,7 +1,31 @@
 from base_parser import BaseParser
 
 class SubParser(BaseParser):
+    """
+    Parses the ONNX Sub node.
+
+    This parser extracts the necessary inputs and outputs, determines their
+    shapes, and adds an entry to the parser's node list representing the
+    Sub operation.
+
+    """
     def parse(self, node, parser):
+        """
+        Parses the Sub node and updates the parser's internal representation.
+
+        Args:
+            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:
+            "name", "type", "input", "output", "attributes", "initializers", and "constants".
+            parser: The main parser module, which maintains information like
+                current_shape, intermediate_tensors_shapes, and the node list.
+
+        Returns:
+            None: The method updates the parser in place.
+
+        Side Effects:
+            - Updates `parser.intermediate_tensors_shapes` with the output of the node and its shape.
+            - Appends a new entry to `parser.nodes` describing the Sub node.
+        """
         current_shape = parser.current_shape.copy()
         inputs = []
         outputs = []

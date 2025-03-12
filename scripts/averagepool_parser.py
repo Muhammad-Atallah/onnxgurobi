@@ -2,7 +2,31 @@ from base_parser import BaseParser
 import math
 
 class AveragePoolParser(BaseParser):
+    """
+    Parses the ONNX AveragePool node.
+
+    This parser extracts the necessary inputs, outputs and attributes, determines their
+    shapes and values, and adds an entry to the parser's node list representing the
+    AveragePool operation.
+
+    """
     def parse(self, node, parser):
+        """
+        Parses the AveragePool node and updates the parser's internal representation.
+
+        Args:
+            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:
+            "name", "type", "input", "output", "attributes", "initializers", and "constants".
+            parser: The main parser module, which maintains information like
+                current_shape, intermediate_tensors_shapes, and the node list.
+
+        Returns:
+            None: The method updates the parser in place.
+
+        Side Effects:
+            - Updates `parser.intermediate_tensors_shapes` with the output of the node and its shape.
+            - Appends a new entry to `parser.nodes` describing the AveragePool node.
+        """
         shape_tensor_input = parser.current_shape.copy()
         kernel_shape = [1, 1]
         strides = [1, 1]
@@ -40,15 +64,17 @@ class AveragePoolParser(BaseParser):
         shape_tensor_output = [channels, height_out, width_out]
         inputs = [{'name': node.input[0], 'shape': shape_tensor_input}]
         outputs = [{'name': node.output[0], 'shape': shape_tensor_output}]
-
         attributes = {
-            'kernel_shape': kernel_shape,
-            'strides': strides,
-            'pads': pads,
-            'ceil_mode': ceil_mode,
-            'dilations': dilations,
-            'count_include_pad': count_include_pad
-        }
+            "kernel_shape": kernel_shape,
+            "strides": strides,
+            "pads": pads,
+            "ceil_mode": ceil_mode,
+            "dilations": dilations,
+            "count_include_pad": count_include_pad
+            }
+
+        parser.intermediate_tensors_shapes[node.output[0]] = shape_tensor_output
+
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,

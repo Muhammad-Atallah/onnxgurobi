@@ -3,34 +3,23 @@ from onnx import numpy_helper, ModelProto, NodeProto
 import numpy as np
 import struct
 
-# onnx_model = onnx.load("simple_dd.onnx")
+onnx_model = onnx.load("simple_dd.onnx")
 
-# graph = onnx_model.graph
+graph = onnx_model.graph
 
-# input_output_tensors_shapes = {}
+input_output_tensors_shapes = {}
 
-# constant_node = {}
+constant_node = {}
 
-# for node in graph.node:
-#     if node.op_type == 'Gemm':
-#         print(node)
+for node in graph.input:
+        print(node)
 
-# for node in graph.initializer:
-#     print(node)
-# for node in graph.node:
-#         print(node)
-    # if node.op_type == "Gemm":
-    #     print(node)
-    #     print(node.input)
-    #     print(node.output)
-        # print("________________________________________")
-    # pass
+for input in graph.input:
+    shape = [dim.dim_value for dim in input.type.tensor_type.shape.dim[1:]]
+    print("shape:", len(shape))
 
-# for input in graph.input:
-#     input_output_tensors_shapes[input.name] = input.type.tensor_type.shape.dim[1].dim_value
-
-# for output in graph.output:
-#     input_output_tensors_shapes[output.name] = output.type.tensor_type.shape.dim[1].dim_value
+for output in graph.output:
+    input_output_tensors_shapes[output.name] = output.type.tensor_type.shape.dim[1].dim_value
 
 
 
@@ -170,28 +159,7 @@ import struct
 
 # print(onnx_model.graph.initializer.get(onnx_model.graph.node[5].input[0]))
 
-a = [111, 114, 109, 104, 97, 97, 115, 97, 77, 119, 108]
-ok = True
-c = 0
 
-for i in range(len(a)):
-    if i == 0:
-        c = 8%len(a)
-    elif i%2 == 0 and i < 8:
-        c = i - 1
-        ok = True
-    elif i == 1:
-        c = i + 6
-    elif i%2 == 1:
-        c = i+3 if i == 3 or i == 7  else i-3
-        ok = ok or not ok
-        while not ok:
-            print("Sleep")
-
-    if  i/100 + i%100 > 100*i:
-        break
-
-    print(chr(a[c]), end=" ")
 
 # print(chr(a[7]), end=" ")
 # print(chr(a[9]), end=" ")

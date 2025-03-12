@@ -2,7 +2,32 @@ from base_parser import BaseParser
 import math
 
 class ConvParser(BaseParser):
+    """
+    Parses the ONNX Conv node.
+
+    This parser extracts the necessary inputs, outputs and attributes, determines their
+    shapes and values, and adds an entry to the parser's node list representing the
+    Conv operation.
+
+    """
     def parse(self, node, parser):
+        """
+        Parses the Conv node and updates the parser's internal representation.
+
+        Args:
+            node (dict): A dictionary describing the ONNX node. Expected to have the following keys:
+            "name", "type", "input", "output", "attributes", "initializers", and "constants".
+            parser: The main parser module, which maintains information like
+                current_shape, intermediate_tensors_shapes, and the node list.
+
+        Returns:
+            None: The method updates the parser in place.
+
+        Side Effects:
+            - Updates `parser.intermediate_tensors_shapes` with the output of the node and its shape.
+            - Updates `parser.current_shape` with the shape of the output.
+            - Appends a new entry to `parser.nodes` describing the Conv node.
+        """
         shape_tensor_input = parser.current_shape.copy()
         shape_weights = parser.initializer_shapes.get(node.input[1])
         shape_bias = parser.initializer_shapes.get(node.input[2]) if node.input[2] else None
@@ -40,12 +65,11 @@ class ConvParser(BaseParser):
         parser.intermediate_tensors_shapes[node.output[0]] = output_shape.copy()
         parser.current_shape = output_shape.copy()
 
-        attributes = {
-            'pads': pads,
-            'strides': strides,
-            'dilations': dilations,
-            'group': group
-        }
+        attributes = {"pads": pads,
+                      "strides" : strides,
+                      "dilations": dilations,
+                      "group": group}
+
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,

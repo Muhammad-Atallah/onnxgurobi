@@ -3,7 +3,7 @@
 import onnx
 import gurobipy
 # from onnxToGurobi import ONNXToGurobi
-from model_builder import ONNXToGurobi
+from onnxToGurobi import ONNXToGurobi
 from gurobipy import GRB
 
 def main():
@@ -13,7 +13,7 @@ def main():
 
     # Prepare the input data
     import numpy as np
-    dummy_input = np.random.randn(1, 784).astype(np.float32)
+    dummy_input = np.random.randn(1, 20).astype(np.float32)
     input_shape = dummy_input.shape  # (1, 1, 4, 4)
 
     # Retrieve the Gurobi model and variables
@@ -65,7 +65,7 @@ def main():
         return
 
     # Get the shape of the output tensor from the intermediate tensors
-    output_shape = converter.parser.input_output_tensors_shapes[output_tensor_name]  # Correct shape: [4, 4, 4]
+    output_shape = converter.internal_onnx.in_out_tensors_shapes[output_tensor_name]  # Correct shape: [4, 4, 4]
 
     # Initialize gurobi_outputs with batch dimension
     gurobi_outputs = np.zeros([1] + output_shape)  # Shape: [1, 4, 4, 4]
