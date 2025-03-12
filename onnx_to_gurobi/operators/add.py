@@ -51,13 +51,14 @@ class AddOperator(BaseOperator):
             ValueError: If any required input or output variable is missing,
             or if tensor shapes do not match (for tensor-tensor addition).
         """
-        print(_node_to_string(self.node))
         var_input1 = self.initializers.get(self.input1)
         if var_input1 is None:
             var_input1 = variables.get(self.input1)
+
         var_input2 = self.initializers.get(self.input2)
         if var_input2 is None:
             var_input2 = variables.get(self.input2)
+
         var_output = variables.get(self.output)
         var_input1_shape = self.input1_shape
         var_input2_shape = self.input2_shape

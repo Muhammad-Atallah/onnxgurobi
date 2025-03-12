@@ -30,8 +30,11 @@ class AddParser(BaseParser):
         current_shape = parser.current_shape.copy()
         inputs = [{'name': node.input[0], 'shape': current_shape.copy()}]
 
+        # Second input is either in the initializers, the parser.intermediate_tensors_shapes, or it's a constant of shape [1]
         if node.input[1] in parser.initializer_shapes:
             inputs.append({'name': node.input[1], 'shape': current_shape.copy()})
+        elif node.input[1] in parser.intermediate_tensors_shapes:
+            inputs.append({'name': node.input[1], 'shape': parser.intermediate_tensors_shapes[node.input[1]]})
         else:
             inputs.append({'name': node.input[1], 'shape': [1]})
 
