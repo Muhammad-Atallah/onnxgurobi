@@ -1,8 +1,8 @@
 import numpy as np
 from gurobipy import quicksum
 from itertools import product
-from .base_operator import BaseOperator
-from ..utils import _node_to_string
+from base_operator import BaseOperator
+from utils import _node_to_string
 
 class MatMul(BaseOperator):
     """
@@ -99,11 +99,6 @@ class MatMul(BaseOperator):
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
 
         for idx in output_indices:
-            if len(idx) > 1:
-                batch_indices = idx[:-1]
-            else:
-                batch_indices = ()
-            output_idx = idx
 
             if idx[-1] >= weights.shape[-1]:
                 raise IndexError(
@@ -112,11 +107,11 @@ class MatMul(BaseOperator):
                 )
 
             expression = quicksum(
-                var_input[batch_indices + (k,)] * float(weights[batch_indices + (k, idx[-1])])
+                var_input[(k,)] * float(weights[(k, idx[-1])])
                 for k in range(sum_dim)
             )
 
             gurobi_model.addConstr(
-                var_output[output_idx] == expression,
+                var_output[idx] == expression,
                 name=f"MatMul_{self.output}_{'_'.join(map(str, idx))}"
             )

@@ -41,6 +41,7 @@ class AddParser(BaseParser):
         outputs = [{'name': node.output[0], 'shape': current_shape.copy()}]
         parser.intermediate_tensors_shapes[node.output[0]] = current_shape.copy()
 
+        # Adding the new node to the list
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,
