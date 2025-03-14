@@ -28,16 +28,45 @@ class ConcatParser(BaseParser):
             - Appends a new entry to `parser.nodes` describing the Concat node.
         """
 
-        axis = 0
-        first_input = node.input[0]
-        first_input_shape = parser.intermediate_tensors_shapes.get(first_input)
-        output_shape = first_input_shape.copy()
-        inputs = []
+        # Number of tensors to be concatenated should be equal 2
+        if len(node.input) != 2:
+            raise ValueError(
+                    f"Error in concat node '{node.name}':"
+                    f"Number of inputs to the concat node isn't 2."
+                )
 
-        for input_name in node.input:
-            input_shape = parser.intermediate_tensors_shapes.get(input_name)
-            output_shape[axis] += input_shape[axis]
-            inputs.append({'name': input_name, 'shape': input_shape})
+        # Only supporting concatenation along axis 0
+        axis = 0
+
+        # Shapes of the inputs extracted either from the initializer_shapes or the intermediate_tensors_shapes dicts
+        shape_input1 = list(
+            parser.initializer_shapes.get(
+                node.input[1],
+                parser.intermediate_tensors_shapes.get(node.input[1], [1]))
+                )
+
+        shape_input2 = list(
+            parser.initializer_shapes.get(
+                node.input[1],
+                parser.intermediate_tensors_shapes.get(node.input[1], [1]))
+                )
+
+        inputs = [
+            {'name': node.input[0], 'shape': shape_input1},
+            {'name': node.input[1], 'shape': shape_input2}
+        ]
+
+        # Only axis dimension can be different
+        if shape_input1[1:] != shape_input2[1:]:
+            raise ValueError(
+                    f"Error in concat node '{node.name}':"
+                    f"Input 1 and 2 can't be concatenated along axis 0 because their non-concatenating dimensions differ."
+                )
+
+        if len(shape_input1) == 1 and len(shape_input2) == 1:
+            output_shape = [shape_input1[0] + shape_input2[0]]
+        else:
+            output_shape = [shape_input1[0] + shape_input2[0], shape_input1[1:]]
 
         outputs = [{'name': node.output[0], 'shape': output_shape.copy()}]
         parser.intermediate_tensors_shapes[node.output[0]] = output_shape.copy()
@@ -48,7 +77,7 @@ class ConcatParser(BaseParser):
             'type': node.op_type,
             'input': inputs,
             'output': outputs,
-            'attributes': [{'name': 'axis', 'value': axis}],
+            'attributes': {'axis' : axis},
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })
