@@ -28,23 +28,10 @@ import torch.onnx
 #         x = self.flatten(x)         # Flatten -> shape: (batch_size, 200)
 #         x = self.fc1(x)             # Fully connected layer -> shape: (batch_size, 10)
 #         return x
+y = torch.rand(5,1)
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-<<<<<<< Updated upstream
-        self.fc1 = nn.Linear(784, 128)
-        self.fc2 = nn.Linear(128, 50)
-        self.fc3 = nn.Linear(50, 10)
-        # self.fc4 = nn.Linear(128, 128)
-        # self.fc5 = nn.Linear(128, 10)
-    
-    def forward(self, x):
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        # x = F.relu(self.fc3(x))
-        # x = F.relu(self.fc4(x))
-        x = self.fc3(x)  # No activation for final layer (e.g., use Softmax externally if needed)
-=======
         # Flatten the input.
         self.flatten = nn.Flatten()
         # A linear layer which will be exported as a Gemm node.
@@ -59,8 +46,10 @@ class Net(nn.Module):
         # Apply the ReLU activation.
         x = F.relu(x)
         # Add the constant (Add node).
-        x = x + 0.1
->>>>>>> Stashed changes
+        x = x + x - x
+        x = torch.matmul(x, y)
+        x = torch.cat([x, x], dim=1)
+        x = torch.reshape(x, (2, ))
         return x
 
 model = Net()
