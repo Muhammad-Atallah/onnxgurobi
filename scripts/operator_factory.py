@@ -10,6 +10,8 @@ from conv import ConvOperator
 from maxpool import MaxPoolOperator
 from averagepool import AveragePoolOperator
 from unsqueeze import UnsqueezeOperator
+from batch_normalization import BatchNormalization
+from dropout import DropoutOperator
 
 class OperatorFactory:
     """
@@ -39,7 +41,9 @@ class OperatorFactory:
             'Conv': ConvOperator,
             'MaxPool': MaxPoolOperator,
             'AveragePool': AveragePoolOperator,
-            'Unsqueeze' : UnsqueezeOperator
+            'Unsqueeze' : UnsqueezeOperator,
+            'BatchNormalization' : BatchNormalization,
+            'Dropout' : DropoutOperator
         }
 
     def create_operator(self, node, initializers):
