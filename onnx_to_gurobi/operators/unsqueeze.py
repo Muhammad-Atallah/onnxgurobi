@@ -1,6 +1,6 @@
 from itertools import product
 from gurobipy import GRB
-from base_operator import BaseOperator
+from .base_operator import BaseOperator
 from ..utils import _node_to_string
 
 
