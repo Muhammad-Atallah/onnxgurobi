@@ -36,10 +36,11 @@ class BatchNormalization(BaseParser):
             {'name': node.input[4], 'shape': current_shape}
         ]
         outputs = [{'name': node.output[0], 'shape': current_shape}]
-        attributes = [
-            {'name': attributes[0].name, 'value': attributes[0].f},
-            {'name': attributes[1].name, 'value': attributes[1].f}
-        ]
+        attributes = {
+            attributes[0].name : attributes[0].f,
+            attributes[1].name : attributes[1].f
+            }
+
         parser.intermediate_tensors_shapes[node.output[0]] = current_shape.copy()
 
         parser.nodes.append({

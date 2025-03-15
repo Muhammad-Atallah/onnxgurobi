@@ -33,7 +33,7 @@ class IdentityParser(BaseParser):
 
         inputs = [{'name': node.input[0], 'shape': input_shape}]
         outputs = [{'name': node.output[0], 'shape': output_shape}]
-        attributes = [{'name': 'Identity', 'value': input_values}]
+        attributes = {'Identity' : input_values}
         parser.intermediate_tensors_shapes[node.output[0]] = output_shape.copy()
 
         parser.nodes.append({

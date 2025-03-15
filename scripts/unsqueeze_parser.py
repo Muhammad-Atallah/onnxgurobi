@@ -33,7 +33,7 @@ class UnsqueezeParser(BaseParser):
         output_shape = _unsqueeze_shape(parser.current_shape.copy(), axes_values)
         inputs = [{'name': node.input[0], 'shape': shape_tensor_input}]
         outputs = [{'name': node.output[0], 'shape': output_shape}]
-        attributes = [{'name': 'axes', 'value': axes_values}]
+        attributes = {'axes' : axes_values}
         parser.intermediate_tensors_shapes[node.output[0]] = output_shape
         parser.current_shape = output_shape.copy()
 

@@ -31,7 +31,7 @@ class ConstantParser(BaseParser):
             - Appends a new entry to `parser.nodes` describing the Constant node.
         """
         outputs = []
-        attributes = []
+        attributes = {}
         scalar_data_type = node.attribute[0].t.data_type  # Data type as integer code
         scalar_raw_data = node.attribute[0].t.raw_data    # Raw binary data
         dims = node.attribute[0].t.dims                   # Tensor dimensions
@@ -55,7 +55,7 @@ class ConstantParser(BaseParser):
                 parser.constant_values[out] = reshaped_values
                 outputs.append({'name': out, 'shape': list(dims)})
                 parser.intermediate_tensors_shapes[out] = list(dims)
-                attributes.append({'name': 'value', 'value': reshaped_values})
+                attributes['value'] = reshaped_values
 
         else:
             for out in node.output:
@@ -63,10 +63,8 @@ class ConstantParser(BaseParser):
                 parser.intermediate_tensors_shapes[out] = 1
                 parser.constant_values[out] = struct.unpack(_get_data_type(scalar_data_type), scalar_raw_data)[0]
             for attribute in node.attribute:
-                attributes.append({
-                    'name': attribute.name,
-                    'value': struct.unpack(_get_data_type(scalar_data_type), scalar_raw_data)[0]
-                })
+                attributes [attribute.name] = struct.unpack(_get_data_type(scalar_data_type), scalar_raw_data)[0]
+
 
         parser.nodes.append({
             'name': node.name,

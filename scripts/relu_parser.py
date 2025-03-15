@@ -27,7 +27,6 @@ class ReluParser(BaseParser):
             - Appends a new entry to `parser.nodes` describing the ReLu node.
         """
         current_shape = parser.current_shape.copy()
-        print("Shape Input to relu:", current_shape)
         inputs = [{'name': node.input[0], 'shape': current_shape.copy()}]
         outputs = [{'name': node.output[0], 'shape': current_shape.copy()}]
         parser.intermediate_tensors_shapes[node.output[0]] = current_shape.copy()
@@ -36,7 +35,7 @@ class ReluParser(BaseParser):
             'type': node.op_type,
             'input': inputs,
             'output': outputs,
-            'attributes': [],
+            'attributes': {},
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })

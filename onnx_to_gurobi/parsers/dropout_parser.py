@@ -38,10 +38,11 @@ class DropoutParser(BaseParser):
                 ratio = attr.f
             elif attr.name == 'training_mode':
                 training_mode = attr.i
-        attributes = [
-            {"name": "ratio", "value": ratio},
-            {"name": "training_mode", "value": training_mode}
-        ]
+        attributes = {
+            "ratio" : ratio,
+            "training_mode" : training_mode
+            }
+
         parser.intermediate_tensors_shapes[node.output[0]] = parser.current_shape.copy()
 
         parser.nodes.append({

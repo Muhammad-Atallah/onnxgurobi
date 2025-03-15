@@ -37,7 +37,7 @@ class ShapeParser(BaseParser):
         parser.current_shape = shape_tensor_out.copy()
         parser.intermediate_tensors_shapes[node.output[0]] = shape_tensor_out.copy()
 
-        attributes = [{'name': 'axis', 'value': 0}]
+        attributes = {'axis' : 0}
 
         return {
             'name': node.name,

@@ -28,12 +28,13 @@ class MatMulParser(BaseParser):
             - Appends a new entry to `parser.nodes` describing the MatMul node.
         """
         shape_input1 = parser.current_shape.copy()
+
+        # Input2 is either in the initializers_shapes or the intermediate_tensors_shapes
         shape_input2 = list(
             parser.initializer_shapes.get(
                 node.input[1],
                 parser.intermediate_tensors_shapes.get(node.input[1], [1])))
         shape_output = shape_input1[:-1] + shape_input2[1:]
-        parser.current_shape = shape_output.copy()
 
         inputs = [
             {'name': node.input[0], 'shape': shape_input1},
@@ -41,13 +42,15 @@ class MatMulParser(BaseParser):
         ]
         outputs = [{'name': node.output[0], 'shape': shape_output}]
         parser.intermediate_tensors_shapes[node.output[0]] = shape_output
+        parser.current_shape = shape_output.copy()
 
+        # Adding the new node to the list
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,
             'input': inputs,
             'output': outputs,
-            'attributes': [],
+            'attributes': {},
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })

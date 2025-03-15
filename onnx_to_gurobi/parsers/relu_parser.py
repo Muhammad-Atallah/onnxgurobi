@@ -35,7 +35,7 @@ class ReluParser(BaseParser):
             'type': node.op_type,
             'input': inputs,
             'output': outputs,
-            'attributes': [],
+            'attributes': {},
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })

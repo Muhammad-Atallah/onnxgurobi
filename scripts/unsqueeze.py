@@ -33,11 +33,8 @@ class UnsqueezeOperator(BaseOperator):
         self.output = node["output"][0]["name"]
         self.input_shape = node["input"][0]["shape"]
         self.output_shape = node["output"][0]["shape"]
-        self.axes = []
-        for attr in node.get("attributes"):
-            if attr["name"] == "axes":
-                self.axes = attr["value"]
-                break
+        self.axes = node.get("attributes").get("axes")
+
         if not self.axes:
             raise ValueError(
                 f"Error in {_node_to_string(self.node)}:"
