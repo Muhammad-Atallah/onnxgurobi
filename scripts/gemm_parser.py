@@ -50,6 +50,8 @@ class GemmParser(BaseParser):
                 value = None
             attributes[attribute.name] = value
 
+        print("Attributes of Gemm:", attributes)
+
         parser.intermediate_tensors_shapes[node.output[0]] = shape_output
         parser.nodes.append({
             'name': node.name,
