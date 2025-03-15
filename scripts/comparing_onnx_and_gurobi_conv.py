@@ -7,13 +7,13 @@ from onnxToGurobi import ONNXToGurobi
 from gurobipy import GRB
 
 def main():
-    onnx_model_path = "simple_ff.onnx"
+    onnx_model_path = "simple_cn.onnx"
     converter = ONNXToGurobi(onnx_model_path)
     converter.build_model()
 
     # Prepare the input data
     import numpy as np
-    dummy_input = np.random.randn(1, 20).astype(np.float32)
+    dummy_input = np.random.randn(1, 1, 10, 10).astype(np.float32)
     input_shape = dummy_input.shape  # (1, 1, 4, 4)
 
     # Retrieve the Gurobi model and variables
