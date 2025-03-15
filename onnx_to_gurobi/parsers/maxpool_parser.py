@@ -72,7 +72,7 @@ class MaxPoolParser(BaseParser):
             }
 
 
-        parser.intermediate_tensors_shapes[node.output[0]] = shape_tensor_output
+        parser.intermediate_tensors_shapes[node.output[0]] = shape_tensor_output.copy()
         parser.current_shape = shape_tensor_output.copy()
 
         parser.nodes.append({
