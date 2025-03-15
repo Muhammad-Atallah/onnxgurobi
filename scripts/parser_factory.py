@@ -13,6 +13,7 @@ from averagepool_parser import AveragePoolParser
 from dropout_parser import DropoutParser
 from constant_parser import ConstantParser
 from identity_parser import IdentityParser
+from batch_normalization_parser import BatchNormalization
 
 class ParserFactory:
     """
@@ -41,6 +42,7 @@ class ParserFactory:
             'AveragePool': AveragePoolParser,
             'Dropout': DropoutParser,
             'Identity': IdentityParser,
+            'BatchNormalization': BatchNormalization
 
         }
 

@@ -27,14 +27,13 @@ class IdentityParser(BaseParser):
             - Updates `parser.intermediate_tensors_shapes` with the output of the node and its shape.
             - Appends a new entry to `parser.nodes` describing the Identity node.
         """
-        input_values = parser.initializer_values[node.input[0]]
-        input_shape = list(np.array(input_values).shape)
-        output_shape = input_shape
-
+    def parse(self, node, parser):
+        input_shape = parser.initializer_shapes[node.input[0]]
+        
         inputs = [{'name': node.input[0], 'shape': input_shape}]
-        outputs = [{'name': node.output[0], 'shape': output_shape}]
-        attributes = {'Identity' : input_values}
-        parser.intermediate_tensors_shapes[node.output[0]] = output_shape.copy()
+        outputs = [{'name': node.output[0], 'shape': input_shape}]
+        attributes = {}
+        parser.intermediate_tensors_shapes[node.output[0]] = input_shape.copy()
 
         parser.nodes.append({
             'name': node.name,

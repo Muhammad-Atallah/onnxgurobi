@@ -12,6 +12,7 @@ from .averagepool import AveragePoolOperator
 from .unsqueeze import UnsqueezeOperator
 from .batch_normalization import BatchNormalization
 from .dropout import DropoutOperator
+from .identity import Identity
 
 class OperatorFactory:
     """
@@ -43,7 +44,8 @@ class OperatorFactory:
             'AveragePool': AveragePoolOperator,
             'Unsqueeze' : UnsqueezeOperator,
             'BatchNormalization' : BatchNormalization,
-            'Dropout' : DropoutOperator
+            'Dropout' : DropoutOperator,
+            'Identity': Identity
         }
 
     def create_operator(self, node, initializers):

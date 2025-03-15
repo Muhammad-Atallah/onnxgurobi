@@ -60,8 +60,8 @@ class BatchNormalization(BaseOperator):
         """
         weights = self.initializers.get(self.weights)
         bias = self.initializers.get(self.bias)
-        mean = variables[self.mean]
-        variance = variables[self.variance]
+        mean = self.initializers.get(self.mean)
+        variance = self.initializers.get(self.variance)
         var_input = variables[self.input]
         var_output = variables[self.output]
 
@@ -70,11 +70,19 @@ class BatchNormalization(BaseOperator):
                 f"Error in {_node_to_string(self.node)}:"
                 f"Variable for input '{self.input}' not found."
                 )
+        
         if var_output is None:
             raise ValueError(
                 f"Error in {_node_to_string(self.node)}:"
                 f"Variable for output '{self.output}' not found."
                 )
+        
+        if mean is None:
+            mean = bias
+        
+        if variance is None:
+            variance = weights
+        
 
         gurobi_model.update()
 

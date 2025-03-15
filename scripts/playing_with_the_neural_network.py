@@ -3,7 +3,7 @@ from onnx import numpy_helper, ModelProto, NodeProto
 import numpy as np
 import struct
 
-onnx_model = onnx.load("simple_ff.onnx")
+onnx_model = onnx.load("conv1.onnx")
 
 graph = onnx_model.graph
 
@@ -11,15 +11,10 @@ input_output_tensors_shapes = {}
 
 constant_node = {}
 
-# for node in graph.node:
-#     if node.op_type == "Concat":
-#         print(len(node.input))
-#         print("-----------------------------")
+for node in graph.node:
+    if node.op_type == "Identity":
+        print(node)
 
-tens1 = np.array([1,2])
-tens2 = np.array([1,2])
-
-print("tens1 shape: ", list(tens1.shape)[1:] == list(tens2.shape)[1:])
 # for input in graph.input:
 #     shape = [dim.dim_value for dim in input.type.tensor_type.shape.dim[1:]]
 #     print("shape:", len(shape))
