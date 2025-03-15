@@ -8,32 +8,40 @@ import gurobipy as gp
 from gurobipy import GRB
 import torch.onnx
 
+
+
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         # Reduce channels: 1 -> 4 instead of 1->8
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=4, kernel_size=3, padding=1)
-        
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
-        
         # Second conv: 4 -> 8 channels instead of 8 -> 16
         self.conv2 = nn.Conv2d(in_channels=4, out_channels=8, kernel_size=3, padding=1)
-        
+        # Batch normalization node for the 8 channels output from conv2.
+        self.bn = nn.BatchNorm2d(num_features=8)
         # Average pooling node after second conv; kernel_size=2 and stride=2
         self.avgpool = nn.AvgPool2d(kernel_size=2, stride=2)
-
-        # Flatten layer to reshape tensor from (batch_size, 8, 5, 5) to (batch_size, 8*5*5)
+        # Dropout node with dropout probability of 0.5
+        self.dropout = nn.Dropout(p=0.5)
+        # Flatten layer to reshape tensor from (batch_size, 8, 2, 2) to (batch_size, 32)
         self.flatten = nn.Flatten()
-        # Fully connected layer with reduced input dimension: 8 * 5 * 5 = 200
+        # Fully connected layer with reduced input dimension: 8 * 2 * 2 = 32
         self.fc1 = nn.Linear(8 * 2 * 2, 10)
 
     def forward(self, x):
-        x = F.relu(self.conv1(x))   # Conv1 followed by ReLU -> shape: (batch_size, 4, 10, 10)
-        x = self.pool(x)            # Max pooling -> shape: (batch_size, 4, 5, 5)
-        x = F.relu(self.conv2(x))   # Conv2 followed by ReLU -> shape: (batch_size, 8, 5, 5)
-        x = F.relu(self.avgpool(x))         # Average pooling -> shape: (batch_size, 8, 2, 2)
-        # x = self.flatten(x)         # Flatten -> shape: (batch_size, 200)
-        # x = self.fc1(x)             # Fully connected layer -> shape: (batch_size, 10)
+        x = F.relu(self.conv1(x))         # Conv1 + ReLU -> shape: (batch_size, 4, 10, 10)
+        x = self.pool(x)                  # Max pooling -> shape: (batch_size, 4, 5, 5)
+        x = self.conv2(x)                 # Conv2 -> shape: (batch_size, 8, 5, 5)
+        x = self.bn(x)                    # Batch normalization -> shape: (batch_size, 8, 5, 5)
+        x = F.relu(x)                     # ReLU activation -> shape: (batch_size, 8, 5, 5)
+        x = self.avgpool(x)               # Average pooling -> shape: (batch_size, 8, 2, 2)
+        x = x.unsqueeze(1)                # Unsqueeze -> shape: (batch_size, 1, 8, 2, 2)
+        x = self.dropout(x)               # Dropout -> shape remains (batch_size, 1, 8, 2, 2)
+        # Reshape node: remove the singleton dimension (index 1)
+        x = x.reshape(1, 8, 2, 2)  # New shape: (batch_size, 8, 2, 2)
+        x = self.flatten(x)               # Flatten -> shape: (batch_size, 32)
+        x = self.fc1(x)                   # Fully connected layer -> shape: (batch_size, 10)
         return x
 
 model = Net()

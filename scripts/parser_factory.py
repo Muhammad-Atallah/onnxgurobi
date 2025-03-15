@@ -40,7 +40,7 @@ class ParserFactory:
             'MaxPool': MaxPoolParser,
             'AveragePool': AveragePoolParser,
             'Dropout': DropoutParser,
-            'Identity': IdentityParser
+            'Identity': IdentityParser,
 
         }
 

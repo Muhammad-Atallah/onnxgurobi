@@ -9,6 +9,7 @@ from flatten import FlattenOperator
 from conv import ConvOperator
 from maxpool import MaxPoolOperator
 from averagepool import AveragePoolOperator
+from unsqueeze import UnsqueezeOperator
 
 class OperatorFactory:
     """
@@ -37,7 +38,8 @@ class OperatorFactory:
             'Flatten': FlattenOperator,
             'Conv': ConvOperator,
             'MaxPool': MaxPoolOperator,
-            'AveragePool': AveragePoolOperator
+            'AveragePool': AveragePoolOperator,
+            'Unsqueeze' : UnsqueezeOperator
         }
 
     def create_operator(self, node, initializers):
