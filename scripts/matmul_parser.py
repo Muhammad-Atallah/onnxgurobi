@@ -41,6 +41,7 @@ class MatMulParser(BaseParser):
         ]
         outputs = [{'name': node.output[0], 'shape': shape_output}]
         parser.intermediate_tensors_shapes[node.output[0]] = shape_output
+
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,

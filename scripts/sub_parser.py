@@ -27,22 +27,26 @@ class SubParser(BaseParser):
             - Appends a new entry to `parser.nodes` describing the Sub node.
         """
         current_shape = parser.current_shape.copy()
-        inputs = []
-        outputs = []
-        if node.op_type == "Sub":
-            inputs.append({'name': node.input[0], 'shape': current_shape.copy()})
-            if node.input[1] in parser.initializer_shapes:
-                inputs.append({'name': node.input[1], 'shape': current_shape.copy()})
-            else:
-                inputs.append({'name': node.input[1], 'shape': [1]})
-            outputs.append({'name': node.output[0], 'shape': current_shape.copy()})
-            parser.intermediate_tensors_shapes[node.output[0]] = current_shape.copy()
+        inputs = [{'name': node.input[0], 'shape': current_shape.copy()}]
+
+        # Second input is either in the initializers, the parser.intermediate_tensors_shapes, or it's a constant of shape [1]
+        if node.input[1] in parser.initializer_shapes:
+            inputs.append({'name': node.input[1], 'shape': current_shape.copy()})
+        elif node.input[1] in parser.intermediate_tensors_shapes:
+            inputs.append({'name': node.input[1], 'shape': parser.intermediate_tensors_shapes[node.input[1]]})
+        else:
+            inputs.append({'name': node.input[1], 'shape': [1]})
+
+        outputs = [{'name': node.output[0], 'shape': current_shape.copy()}]
+        parser.intermediate_tensors_shapes[node.output[0]] = current_shape.copy()
+
+        # Adding the new node to the list
         parser.nodes.append({
             'name': node.name,
             'type': node.op_type,
             'input': inputs,
             'output': outputs,
-            'attributes': [],
+            'attributes': {},
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })
