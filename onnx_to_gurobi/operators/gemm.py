@@ -70,6 +70,8 @@ class GemmOperator(BaseOperator):
         var_output_shape = self.output_shape
         alpha = self.attributes.get('alpha', 1.0)
         beta = self.attributes.get('beta', 1.0)
+        transB = self.attributes.get('transB', 0)
+        transA = self.attributes.get('transA', 0)
 
         if var_input is None:
             raise ValueError(
@@ -89,14 +91,11 @@ class GemmOperator(BaseOperator):
 
         gurobi_model.update()
 
-        if weights.shape[0] != var_input_shape[-1]:
-            if weights.shape[-1] == var_input_shape[-1]:
-                weights = weights.T
-            else:
-                raise ValueError(
-                    f"Error in {_node_to_string(self.node)}:"
-                    f"Unexpected weights shape {weights.shape}"
-                )
+        if transB == 1:
+            weights = weights.T
+
+        if transA == 1:
+            var_input = var_input.T
 
         sum_dim = var_input_shape[-1]
 
