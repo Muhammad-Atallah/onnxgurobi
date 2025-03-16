@@ -148,3 +148,92 @@ torch.onnx.export(model,               # Model being exported
                   output_names=['output'],  # Name of the output layer
                   dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
                                 'output': {0: 'batch_size'}})
+
+############################################################################################
+class FC1(nn.Module):
+    def __init__(self):
+        super(FC1, self).__init__()
+        # Flatten node to convert input into a vector.
+        self.flatten = nn.Flatten()
+        # Fully connected layers (Gemm nodes).
+        self.fc1 = nn.Linear(28 * 28, 512)
+        self.fc2 = nn.Linear(512, 128)
+        self.dropout = nn.Dropout(p=0.5)
+        self.fc3 = nn.Linear(128, 10)  # Output layer: 10 classes
+
+    def forward(self, x):
+        x = self.flatten(x)           # (batch, 28*28)
+        x = F.relu(self.fc1(x))       # (batch, 512)
+        x = F.relu(self.fc2(x))       # (batch, 128)
+        x = self.dropout(x)
+        x = self.fc3(x)               # (batch, 10)
+        return x
+    
+model = FC1()
+
+dummy_input = torch.randn(1, 28, 28)  # Batch size of 1
+onnx_file_path = "fc1.onnx"  # Desired output file name
+torch.onnx.export(model,               # Model being exported
+                  dummy_input,       # Model input (or a tuple for multiple inputs)
+                  onnx_file_path,    # Where to save the model
+                  export_params=True,  # Store the trained parameter weights inside the model file
+                  opset_version=11,   # ONNX version to export the model to
+                  do_constant_folding=True,  # Whether to execute constant folding for optimization
+                  input_names=['input'],   # Name of the input layer
+                  output_names=['output'],  # Name of the output layer
+                  dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
+                                'output': {0: 'batch_size'}})
+
+###########################################
+y = torch.rand(784,784)
+class conv2(nn.Module):
+    def __init__(self):
+        super(conv2, self).__init__()
+        # Convolution layers.
+        self.conv1 = nn.Conv2d(1, 8, kernel_size=3, padding=1)  # (batch,8,28,28)
+        self.conv2 = nn.Conv2d(8, 16, kernel_size=3, padding=1) # (batch,16,28,28)
+        # Batch normalization.
+        self.bn = nn.BatchNorm2d(16)
+        # Pooling layers.
+        self.maxpool = nn.MaxPool2d(kernel_size=2, stride=2)      # (batch,16,14,14)
+        self.avgpool = nn.AvgPool2d(kernel_size=2, stride=2)        # (batch,16,7,7)
+        # Dropout.
+        self.dropout = nn.Dropout(p=0.4)
+        # Unsqueeze/reshape and flatten.
+        self.flatten = nn.Flatten()
+        # Fully connected (Gemm) layer.
+        # After pooling, feature map is (batch,16,7,7) so flattened size = 16*7*7 = 784.
+        # We will concatenate with a branch of the same size, so fc expects 1568 features.
+        # self.fc = nn.Linear(1568, 10)
+        # Constant matrix for matmul branch.        
+    def forward(self, x):
+        x = F.relu(self.conv1(x))             # → (batch,8,28,28)
+        x = F.relu(self.conv2(x))             # → (batch,16,28,28)
+        x = self.bn(x)                        # → (batch,16,28,28)
+        x = self.maxpool(x)                   # → (batch,16,14,14)
+        x = self.avgpool(x)                   # → (batch,16,7,7)
+        x = self.dropout(x)                   # dropout
+        # Trivial add/sub operations.
+        x = x + x - x
+        # Flatten features.
+        x_flat = self.flatten(x)              # → (batch, 784)
+        # Branch via matmul.
+        branch = torch.matmul(x_flat, y)  # → (batch, 784)
+        # Concat original branch and matmul branch.
+        x_cat = torch.cat([x_flat, branch], dim=1)   # → (batch, 1568)
+        # x_out = F.relu(self.fc(x_cat))         # Fully connected (Gemm) + ReLU → (batch, 10)
+        return x_cat
+
+model = conv2()
+dummy_input = torch.randn(1, 1, 28, 28)  # Batch size of 1
+onnx_file_path = "conv2.onnx"  # Desired output file name
+torch.onnx.export(model,               # Model being exported
+                  dummy_input,       # Model input (or a tuple for multiple inputs)
+                  onnx_file_path,    # Where to save the model
+                  export_params=True,  # Store the trained parameter weights inside the model file
+                  opset_version=11,   # ONNX version to export the model to
+                  do_constant_folding=True,  # Whether to execute constant folding for optimization
+                  input_names=['input'],   # Name of the input layer
+                  output_names=['output'],  # Name of the output layer
+                  dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
+                                'output': {0: 'batch_size'}})

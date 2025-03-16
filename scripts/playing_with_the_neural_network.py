@@ -3,7 +3,7 @@ from onnx import numpy_helper, ModelProto, NodeProto
 import numpy as np
 import struct
 
-onnx_model = onnx.load("conv1.onnx")
+onnx_model = onnx.load("conv2.onnx")
 
 graph = onnx_model.graph
 
@@ -12,7 +12,6 @@ input_output_tensors_shapes = {}
 constant_node = {}
 
 for node in graph.node:
-    if node.op_type == "Identity":
         print(node)
 
 # for input in graph.input:
