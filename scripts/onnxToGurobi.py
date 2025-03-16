@@ -60,14 +60,9 @@ class ONNXToGurobi:
             if node['type'] == "Constant":
                 # Constants are not model variables
                 if 'attributes' in node and node['attributes']:
-                    print("node inside model builder:", node)
                     self.variables[output_name] = node['attributes']['value']
                 else:
                     self.variables[output_name] = 0
-
-            # elif node['type'] == "Identity":
-            #     print("node inside model builder:", node)
-            #     self.variables[output_name] = node['outputs'][0]
 
             elif node['type'] == "Relu":
                 shape = node['output'][0]['shape']

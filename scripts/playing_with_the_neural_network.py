@@ -3,7 +3,7 @@ from onnx import numpy_helper, ModelProto, NodeProto
 import numpy as np
 import struct
 
-onnx_model = onnx.load("conv2.onnx")
+onnx_model = onnx.load("fc3.onnx")
 
 graph = onnx_model.graph
 
@@ -11,7 +11,7 @@ input_output_tensors_shapes = {}
 
 constant_node = {}
 
-for node in graph.node:
+for node in graph.initializer:
         print(node)
 
 # for input in graph.input:

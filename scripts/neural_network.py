@@ -237,3 +237,41 @@ torch.onnx.export(model,               # Model being exported
                   output_names=['output'],  # Name of the output layer
                   dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
                                 'output': {0: 'batch_size'}})
+##############################################################################
+class FC3(nn.Module):
+    def __init__(self):
+        super(FC3, self).__init__()
+        self.flatten = nn.Flatten()
+        self.fc1 = nn.Linear(784, 300)
+        self.fc2 = nn.Linear(300, 100)
+        # Final FC expects concatenated features (100 from original + 100 from branch).
+        self.fc3 = nn.Linear(200, 10)
+        self.dropout = nn.Dropout(p=0.4)
+        # Constant matrix for matmul branch.
+        self.register_buffer('mat_branch', torch.rand(100, 100))
+        
+    def forward(self, x):
+        x = self.flatten(x)                # (batch, 784)
+        x = F.relu(self.fc1(x))            # (batch, 300)
+        x = self.dropout(x)
+        x = F.relu(self.fc2(x))            # (batch, 100)
+        # Matmul branch.
+        branch = torch.matmul(x, self.mat_branch)  # (batch, 100)
+        # Concat original and branch features.
+        x = torch.cat([x, branch], dim=1)   # (batch, 200)
+        x = F.relu(self.fc3(x))            # (batch, 10)
+        return x
+    
+model = FC3()
+dummy_input = torch.randn(1, 784)  # Batch size of 1
+onnx_file_path = "fc3.onnx"  # Desired output file name
+torch.onnx.export(model,               # Model being exported
+                  dummy_input,       # Model input (or a tuple for multiple inputs)
+                  onnx_file_path,    # Where to save the model
+                  export_params=True,  # Store the trained parameter weights inside the model file
+                  opset_version=11,   # ONNX version to export the model to
+                  do_constant_folding=True,  # Whether to execute constant folding for optimization
+                  input_names=['input'],   # Name of the input layer
+                  output_names=['output'],  # Name of the output layer
+                  dynamic_axes={'input': {0: 'batch_size'},  # Variable-length axes
+                                'output': {0: 'batch_size'}})

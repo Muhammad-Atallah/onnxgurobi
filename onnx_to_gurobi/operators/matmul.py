@@ -61,6 +61,8 @@ class MatMul(BaseOperator):
         var_input = variables[self.input1]
         var_output = variables[self.output]
         weights = self.initializers.get(self.input2, np.array(self.constants[self.input2]))
+        if weights is None:
+            weights = self.initializers[self.input2]
         var_input_shape = self.input1_shape
         var_output_shape = self.output_shape
 

@@ -54,6 +54,7 @@ class FlattenParser(BaseParser):
         inputs = [{'name': node.input[0], 'shape': current_shape}]
         outputs = [{'name': node.output[0], 'shape': shape_tensor_out}]
         parser.intermediate_tensors_shapes[node.output[0]] = shape_tensor_out.copy()
+        parser.current_shape = shape_tensor_out.copy()
 
         parser.nodes.append({
             'name': node.name,
