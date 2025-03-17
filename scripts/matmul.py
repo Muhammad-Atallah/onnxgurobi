@@ -38,6 +38,7 @@ class MatMul(BaseOperator):
         self.output_shape = node["output"][0]["shape"]
         self.initializers = initializers
         self.constants = node["constants"]
+        self.attributes = node["attributes"]
 
     def apply_constraints(self, gurobi_model, variables):
         """
@@ -58,16 +59,26 @@ class MatMul(BaseOperator):
             IndexError: If any dimension in the resulting weights array is out of
                 bounds for the required operation.
         """
-        var_input = variables[self.input1]
-        var_output = variables[self.output]
-        print("INITIALIZERS:::::::::::", self.initializers[self.input2])
-        weights = self.initializers.get(self.input2, np.array(self.constants[self.input2]))
-        if weights is None:
-            weights = self.initializers[self.input2]
-        var_input_shape = self.input1_shape
-        var_output_shape = self.output_shape
+        var_input1 = variables[self.input1]
+        if var_input1 is None:
+            var_input1 = self.initializers.get(self.input1)
+        if var_input1 is None:
+            var_input1 = np.array(self.constants[self.input1])
+        
+        var_input2 = self.initializers.get(self.input2)
+        if var_input2 is None:
+            var_input2 = np.array(self.constants[self.input2])
+        if var_input2 is None:
+            var_input2 = variables[self.input2]
 
-        if var_input is None:
+        var_output = variables[self.output]
+        var_input1_shape = self.input1_shape
+        input2_shape = self.input2_shape 
+        var_output_shape = self.output_shape
+        transB = self.attributes.get('transB', 0)
+        transA = self.attributes.get('transA', 0)
+
+        if var_input1 is None:
             raise ValueError(
                 f"Error in {_node_to_string(self.node)}:"
                 f"Variable for input '{self.input}' not found."
@@ -77,40 +88,36 @@ class MatMul(BaseOperator):
                 f"Error in {_node_to_string(self.node)}:"
                 f"Variable for input '{self.output}' not found."
             )
-        if weights is None:
+        if var_input2 is None:
             raise ValueError(f"Initializer for '{self.input2}' not found or is None.")
 
         gurobi_model.update()
 
-        if isinstance(var_input_shape, int):
-            var_input_shape = [var_input_shape]
+        if isinstance(var_input1_shape, int):
+            var_input1_shape = [var_input1_shape]
         if isinstance(var_output_shape, int):
             var_output_shape = [var_output_shape]
 
-        if weights.shape[0] != var_input_shape[-1]:
-            if weights.shape[-1] == var_input_shape[-1]:
-                weights = weights.T
-            else:
-                raise ValueError(
-                    f"Error in {_node_to_string(self.node)}:"
-                    f"Unexpected weights shape {weights.shape} for input2 '{self.input2}'. "
-                )
+        if transB == 1:
+            weights = weights.T
+        if transA == 1:
+            var_input = var_input.T
 
-        sum_dim = var_input_shape[-1]
+        sum_dim = var_input1_shape[-1]
 
         # Generate all multi-dimensional indices for the input tensor
         output_indices = list(product(*[range(dim) for dim in var_output_shape]))
 
         for idx in output_indices:
 
-            if idx[-1] >= weights.shape[-1]:
+            if idx[-1] >= input2_shape[-1]:
                 raise IndexError(
                     f"Error in {_node_to_string(self.node)}:"
-                    f"Index {idx[-1]} out of bounds for weights with shape {weights.shape[-1]} "
+                    f"Index {idx[-1]} out of bounds for var_input2 with shape {input2_shape[-1]} "
                 )
 
             expression = quicksum(
-                var_input[(k,)] * float(weights[(k, idx[-1])])
+                var_input1[(k,)] * float(var_input2[(k, idx[-1])])
                 for k in range(sum_dim)
             )
 

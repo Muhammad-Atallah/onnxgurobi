@@ -93,7 +93,6 @@ class GemmOperator(BaseOperator):
 
         if transB == 1:
             weights = weights.T
-
         if transA == 1:
             var_input = var_input.T
 

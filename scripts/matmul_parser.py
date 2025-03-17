@@ -1,3 +1,4 @@
+import onnx
 from base_parser import BaseParser
 
 class MatMulParser(BaseParser):
@@ -41,6 +42,16 @@ class MatMulParser(BaseParser):
             {'name': node.input[1], 'shape': shape_input2}
         ]
         outputs = [{'name': node.output[0], 'shape': shape_output}]
+        attributes = {}
+        for attribute in node.attribute:
+            if attribute.type == onnx.AttributeProto.FLOAT:
+                value = attribute.f
+            elif attribute.type == onnx.AttributeProto.INT:
+                value = attribute.i
+            else:
+                value = None
+            attributes[attribute.name] = value
+
         parser.intermediate_tensors_shapes[node.output[0]] = shape_output
         parser.current_shape = shape_output.copy()
 
@@ -50,7 +61,7 @@ class MatMulParser(BaseParser):
             'type': node.op_type,
             'input': inputs,
             'output': outputs,
-            'attributes': {},
+            'attributes': attributes,
             'initializers': parser.initializer_values,
             'constants': parser.constant_values
         })

@@ -1,5 +1,5 @@
-from base_parser import BaseParser
 import onnx
+from base_parser import BaseParser
 
 class GemmParser(BaseParser):
     """
