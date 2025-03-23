@@ -2,7 +2,7 @@ Metadata-Version: 2.4
 Name: onnxgurobi
 Version: 0.1.0
 Summary: The onnx_to_gurobi is a Python library that creates Gurobi models for neural networks in ONNX format.
-Author-email: Muhammad Sabri Atallah <muhammad.sabri@outlook.com>
+Author-email: Muhammad Atallah <muhammad.sabri@outlook.com>
 License-Expression: MIT
 Project-URL: Homepage, https://yourhomepage.example.com/
 Project-URL: Repository, https://github.com/yourusername/onnx_gurobi

@@ -20,3 +20,12 @@ The library has been designed to allow easy extensions, and it currently support
 - Shape
 - Concat
 - Dropout
+
+
+Installation
+
+Gurobi is not installed automatically. Please install it manually using:
+    conda install -c gurobi gurobi
+
+Afterward run the following:
+    pip install --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple onnxgurobi
