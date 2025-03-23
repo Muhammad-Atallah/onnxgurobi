@@ -8,6 +8,7 @@ onnx_to_gurobi/parser.py
 onnx_to_gurobi/utils.py
 onnx_to_gurobi/operators/__init__.py
 onnx_to_gurobi/operators/add.py
+onnx_to_gurobi/operators/averagepool.py
 onnx_to_gurobi/operators/base_operator.py
 onnx_to_gurobi/operators/batch_normalization.py
 onnx_to_gurobi/operators/concat.py
@@ -15,7 +16,9 @@ onnx_to_gurobi/operators/conv.py
 onnx_to_gurobi/operators/dropout.py
 onnx_to_gurobi/operators/flatten.py
 onnx_to_gurobi/operators/gemm.py
+onnx_to_gurobi/operators/identity.py
 onnx_to_gurobi/operators/matmul.py
+onnx_to_gurobi/operators/maxpool.py
 onnx_to_gurobi/operators/operator_factory.py
 onnx_to_gurobi/operators/relu.py
 onnx_to_gurobi/operators/reshape.py
