@@ -24,8 +24,18 @@ The library has been designed to allow easy extensions, and it currently support
 
 Installation
 
-Gurobi is not installed automatically. Please install it manually using:
-    conda install -c gurobi gurobi
+We highly recommend creating a virtual conda environment and installing the library within the environment by following the following steps:
 
-Afterward run the following:
-    pip install --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple onnxgurobi
+1- Gurobi is not installed automatically. Please install it manually using:
+```
+    conda install -c gurobi gurobi
+```
+2- Make sure to switch to Python 11 inside your environment using:
+```
+    conda install python=11
+``` 
+
+3- Install the library using:
+```
+    pip install onnxgurobi
+```
