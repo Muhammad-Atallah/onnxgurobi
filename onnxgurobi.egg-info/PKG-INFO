@@ -1,21 +1,21 @@
 Metadata-Version: 2.4
 Name: onnxgurobi
-Version: 0.1.0
+Version: 0.1.2
 Summary: The onnx_to_gurobi is a Python library that creates Gurobi models for neural networks in ONNX format.
 Author-email: Muhammad Atallah <muhammad.sabri@outlook.com>
 License-Expression: MIT
 Project-URL: Homepage, https://yourhomepage.example.com/
 Project-URL: Repository, https://github.com/yourusername/onnx_gurobi
 Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
 Classifier: Programming Language :: Python :: 3.12
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.12
+Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 License-File: LICENSE.txt
 Requires-Dist: numpy>=1.26.4
 Requires-Dist: onnx>=1.16.2
 Requires-Dist: onnxruntime>=1.20.1
-Requires-Dist: gurobi>=12.0.1
 Requires-Dist: torch>=2.5.1
 Requires-Dist: pytest>=8.3.5
 Dynamic: license-file
@@ -42,3 +42,12 @@ The library has been designed to allow easy extensions, and it currently support
 - Shape
 - Concat
 - Dropout
+
+
+Installation
+
+Gurobi is not installed automatically. Please install it manually using:
+    conda install -c gurobi gurobi
+
+Afterward run the following:
+    pip install --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple onnxgurobi
