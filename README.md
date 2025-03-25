@@ -42,17 +42,17 @@ We highly recommend creating a virtual conda environment and installing the libr
 
 # Getting Started
 
-The '''ONNXToGurobi''' class provides the central interface for converting an ONNX model into a Gurobi optimization model.
+The ```ONNXToGurobi``` class provides the central interface for converting an ONNX model into a Gurobi optimization model.
 
 To get access to the class's methods and attributes, you need to import it using:
 
-'''
+```
 from onnx_to_gurobi.onnxToGurobi import ONNXToGurobi
 
-'''
+```
 
 
-The '''ONNXToGurobi''' class:
+The ```ONNXToGurobi``` class:
 
 - Parses the ONNX graph and constructs an internal representation of each operator and its corresponding tensor shapes.
 
@@ -71,7 +71,7 @@ The '''ONNXToGurobi''' class:
 
 An overview of the class’s methods and attributes:
 
-'''
+```
 class ONNXToGurobi:
     def build_model(self):
         """
@@ -94,5 +94,5 @@ class ONNXToGurobi:
     self.nodes               # Node definitions parsed from ONNX
     self.initializers        # Constant tensors extracted from the ONNX graph
 
-'''
+```
 
