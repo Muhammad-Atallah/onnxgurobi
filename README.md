@@ -96,3 +96,6 @@ class ONNXToGurobi:
 
 ```
 
+# How to Use
+
+See [example1.py](./examples/example1.py) for a detailed example.
