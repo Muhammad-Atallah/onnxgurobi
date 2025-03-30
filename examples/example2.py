@@ -21,7 +21,7 @@ eps = 0.3 # Each pixel is allowed to be changed by the value epsilon.
 delta = 0.01 # A small margin delta to enforce misclassification
 
 # 3) Convert the ONNX model to a Gurobi model
-model_builder = ONNXToGurobi("mnist_classifier.onnx")
+model_builder = ONNXToGurobi("./onnxgurobi/examples/mnist_classifier.onnx")
 model_builder.build_model()
 gurobi_model = model_builder.get_gurobi_model()
 

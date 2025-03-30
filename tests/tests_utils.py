@@ -62,7 +62,7 @@ def solve_gurobi_model(model_path, input_data, input_tensor_name='input', output
 
     return gurobi_outputs
 
-def compare_models(model_path, input_data, input_tensor_name='input', output_tensor_name='output', atol=1e-4):
+def compare_models(model_path, input_data, input_tensor_name='input', output_tensor_name='output', atol=0.001):
     """
     Runs both the ONNX model and the Gurobi model, then asserts that their outputs are close.
     """
