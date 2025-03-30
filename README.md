@@ -98,4 +98,5 @@ class ONNXToGurobi:
 
 # How to Use
 
-See [example1.py](./examples/example1.py) for a detailed example.
+See [example1.py](./examples/example1.py) for a simple example.
+See [example2.py](./examples/example2.py) for a detailed adversarial example.
