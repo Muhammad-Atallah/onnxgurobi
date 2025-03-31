@@ -58,10 +58,15 @@ for idx, var in output_vars.items():
         binary_vars[class_label] = gurobi_model.addVar(vtype=GRB.BINARY, name=f"s_{class_label}")
 
 for class_label, s in binary_vars.items():
-    gurobi_model.addConstr(output_vars[(label,)] - output_vars[(class_label,)] <= -delta + M*(1 - s), name=f"{class_label}_big_M")
+    gurobi_model.addConstr(
+        output_vars[(label,)] - output_vars[(class_label,)] <= -delta + M*(1 - s),
+        name=f"{class_label}_big_M"
+        )
 
-
-gurobi_model.addConstr(quicksum(binary_vars[class_label] for class_label in binary_vars) >= 1, name="missclassification_constr")
+gurobi_model.addConstr(
+    quicksum(binary_vars[class_label] for class_label in binary_vars) >= 1,
+    name="missclassification_constr"
+    )
 
 # 6) Optimize the model
 gurobi_model.optimize()
