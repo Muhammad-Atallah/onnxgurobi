@@ -32,5 +32,4 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://yourhomepage.example.com/"
-"Repository" = "https://github.com/yourusername/onnx_gurobi"
+"Repository" = "https://github.com/Muhammad-Atallah/onnxgurobi"
