@@ -61,11 +61,13 @@ class ONNXParser:
         for input in self.graph.input:
             if input.name in self.initializer_shapes:
                 continue
-            shape = [dim.dim_value for dim in input.type.tensor_type.shape.dim[1:]]
+            shape = [dim.dim_value for dim in input.type.tensor_type.shape.dim]
+            shape = shape if shape[0] != 0 else shape[1:]
             self.input_output_tensors_shapes[input.name] = shape
 
         for output in self.graph.output:
-            shape = [dim.dim_value for dim in output.type.tensor_type.shape.dim[1:]]
+            shape = [dim.dim_value for dim in output.type.tensor_type.shape.dim]
+            shape = shape if shape[0] != 0 else shape[1:]
             self.input_output_tensors_shapes[output.name] = shape
 
         if not self.graph.input:

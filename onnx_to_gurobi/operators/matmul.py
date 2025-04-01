@@ -54,7 +54,7 @@ class MatMul(BaseOperator):
             IndexError: If any dimension in the resulting weights array is out of
                 bounds for the required operation.
         """
-        var_input1 = variables[self.input1]
+        var_input1 = variables.get(self.input1)
         if var_input1 is None:
             var_input1 = self.initializers.get(self.input1)
         if var_input1 is None:
@@ -64,11 +64,11 @@ class MatMul(BaseOperator):
         if var_input2 is None:
             var_input2 = np.array(self.constants[self.input2])
         if var_input2 is None:
-            var_input2 = variables[self.input2]
+            var_input2 = variables.get(self.input2)
 
         var_output = variables[self.output]
         var_input1_shape = self.input1_shape
-        input2_shape = self.input2_shape 
+        var_input2_shape = self.input2_shape 
         var_output_shape = self.output_shape
         transB = self.attributes.get('transB', 0)
         transA = self.attributes.get('transA', 0)
@@ -94,9 +94,9 @@ class MatMul(BaseOperator):
             var_output_shape = [var_output_shape]
 
         if transB == 1:
-            weights = weights.T
+            var_input2 = var_input2.T
         if transA == 1:
-            var_input = var_input.T
+            var_input1 = var_input1.T
 
         sum_dim = var_input1_shape[-1]
 
@@ -105,10 +105,10 @@ class MatMul(BaseOperator):
 
         for idx in output_indices:
 
-            if idx[-1] >= input2_shape[-1]:
+            if idx[-1] >= var_input2_shape[-1]:
                 raise IndexError(
                     f"Error in {_node_to_string(self.node)}:"
-                    f"Index {idx[-1]} out of bounds for var_input2 with shape {input2_shape[-1]} "
+                    f"Index {idx[-1]} out of bounds for var_input2 with shape {var_input2_shape[-1]} "
                 )
 
             expression = quicksum(

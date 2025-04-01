@@ -1,3 +1,4 @@
+import onnx
 from .base_parser import BaseParser
 
 class MatMulParser(BaseParser):

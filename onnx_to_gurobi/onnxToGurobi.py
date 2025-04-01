@@ -64,10 +64,6 @@ class ONNXToGurobi:
                 else:
                     self.variables[output_name] = 0
 
-            # elif node['type'] == "Identity":
-            #     print("node inside model builder:", node)
-            #     self.variables[output_name] = node['outputs'][0]
-
             elif node['type'] == "Relu":
                 shape = node['output'][0]['shape']
                 indices = _generate_indices(shape)
