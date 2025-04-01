@@ -100,3 +100,13 @@ class ONNXToGurobi:
 
 See [example1.py](./examples/example1.py) for a simple example.
 See [example2.py](./examples/example2.py) for a detailed adversarial example.
+
+# Important Notes
+
+* Make sure your model is exported into ONNX using opset version 11.
+* The library doesn't support recurrent neural networks (RNNs).
+* The 3-D convolutional operation isn't supported.
+* If an initializer/constant (e.g. weights) is used as an input to the MatMul, the node expects it to be the second input.
+* The Concat node’s output must match the input shape of the following layer. In addition, the node expects only 2 inputs.
+* Since our library is designed solely for production and not for training, we encode the Dropout node to
+function only in inference mode, which means that its input passes through unchanged.
