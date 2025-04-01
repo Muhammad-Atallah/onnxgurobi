@@ -1,4 +1,3 @@
-from itertools import product
 from gurobipy import Model, GRB
 from .operators.operator_factory import OperatorFactory
 from .parser import ONNXParser
@@ -102,7 +101,6 @@ class ONNXToGurobi:
         self.create_variables()
         for node in self.nodes:
             if node['type'] != "Constant":
-                op_type = node['type']
                 operator = self.operator_factory.create_operator(node, self.initializers)
                 operator.apply_constraints(self.model, self.variables)
 
